@@ -1,0 +1,71 @@
+.tactile-nav-container {
+  width: 100%;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  pointer-events: auto;
+}
+
+.paper-nav {
+  position: relative;
+  background-color: #fdfaf0; /* Cream recycled paper */
+  background-image: url("https://www.transparenttextures.com/patterns/recycled-paper.png"); /* Subtle grain */
+  padding: 1rem 2.5rem;
+  box-shadow: 
+    0 10px 20px rgba(0,0,0,0.3),
+    inset 0 1px 1px rgba(255,255,255,0.8);
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  border-radius: 2px;
+  /* Soft relief shadow onto background */
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
+}
+
+/* Torn horizontal edge along the top */
+.paper-nav::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background-color: #fdfaf0;
+  background-image: url("https://www.transparenttextures.com/patterns/recycled-paper.png");
+  clip-path: polygon(
+    0% 100%, 3% 60%, 7% 90%, 11% 55%, 15% 85%, 20% 50%, 24% 95%, 29% 60%, 
+    33% 88%, 38% 52%, 42% 92%, 47% 58%, 51% 85%, 56% 51%, 60% 90%, 65% 55%, 
+    70% 88%, 74% 50%, 79% 95%, 83% 60%, 88% 92%, 92% 55%, 96% 85%, 100% 100%
+  );
+}
+
+.nav-item {
+  color: #0f4c5c; /* Deep teal blue */
+  text-decoration: none;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+  position: relative;
+  /* Slight embossed effect */
+  text-shadow: 0.5px 0.5px 1px rgba(255,255,255,0.8), -0.5px -0.5px 1px rgba(0,0,0,0.1);
+}
+
+.nav-item:hover {
+  transform: translateY(-1px);
+  opacity: 0.8;
+}
+
+.nav-item.contact {
+  color: #ff6a00; /* Vivid orange */
+  font-weight: 700;
+}
+
+/* Ink indentation effect on active/hover */
+.nav-item:active {
+  transform: translateY(0.5px);
+  text-shadow: inset 0.5px 0.5px 1px rgba(0,0,0,0.2);
+}
