@@ -16,7 +16,7 @@ export default function Home() {
             <a href="#contact" className="border border-white/20 text-white px-8 py-3 rounded-lg font-semibold hover:border-blue-500 hover:text-blue-500 transition bg-white/5">Contact Me</a>
           </div>
         </div>
-        <div className="flex md:justify-end">
+        <div className="flex justify-end">
           <img
             src={userPhoto}
             alt="Varun"

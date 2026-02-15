@@ -1,4 +1,4 @@
-import PaperCard from '../components/ui/PaperCard';
+import ProjectScrollColumn from '../components/ui/ProjectScrollColumn';
 import { 
   SiReact, 
   SiNodedotjs, 
@@ -32,18 +32,16 @@ export default function Projects() {
 
   return (
     <section id="projects" className="py-20 px-4 max-w-6xl mx-auto min-h-screen">
-      <h2 className="text-4xl font-bold mb-16 text-center">Featured Projects</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project, index) => (
-          <PaperCard 
-            key={index}
-            title={project.title}
-            description={project.description}
-            icon={project.icon}
-            rotation={project.rotation}
-          />
-        ))}
-      </div>
+      <h2 className="text-4xl font-bold mb-12 text-center">Featured Projects</h2>
+      <ProjectScrollColumn
+        items={[
+          ...projects,
+          { title: "Serverless Chat App", description: "Realtime messaging using Firebase/Socket.io with auth and presence.", icon: SiFirebase },
+          { title: "API Gateway", description: "Node.js gateway with rate limiting, caching and observability.", icon: SiNodedotjs },
+          { title: "Data Pipelines", description: "Python ETL pipelines for analytics and reporting.", icon: SiPython }
+        ]}
+        gap={20}
+      />
     </section>
   )
 }

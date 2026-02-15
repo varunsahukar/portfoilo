@@ -31,34 +31,18 @@ export default function TechStack() {
       <div className="max-w-6xl mx-auto px-4 mb-12">
         <h2 className="text-3xl font-bold text-center opacity-80">Tech Stack</h2>
       </div>
-      
       <div className="relative">
-        <LogoLoop 
-          logos={techLogos} 
-          speed={60} 
-          direction="left" 
-          logoHeight={50} 
-          gap={80} 
-          hoverSpeed={0} 
-          scaleOnHover 
-          fadeOut 
-          fadeOutColor="#000000" 
-          ariaLabel="Technology partners" 
-        />
-      </div>
-
-      <div className="mt-8 relative">
-        <LogoLoop 
-          logos={[...techLogos].reverse()} 
-          speed={40} 
-          direction="right" 
-          logoHeight={50} 
-          gap={80} 
-          hoverSpeed={0} 
-          scaleOnHover 
-          fadeOut 
-          fadeOutColor="#000000" 
-          ariaLabel="Technology partners reverse" 
+        <LogoLoop
+          logos={techLogos}
+          speed={55}
+          direction="left"
+          logoHeight={56}
+          gap={72}
+          hoverSpeed={0}
+          scaleOnHover
+          fadeOut
+          fadeOutColor="#000000"
+          ariaLabel="Technology stack"
         />
       </div>
     </section>

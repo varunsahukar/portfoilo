@@ -6,9 +6,9 @@ export default function About() {
   const bioPara2 = "I enjoy building backend services using Python and FastAPI, and working with relational databases like PostgreSQL. At the same time, I value clean user interfaces and responsive design, creating intuitive experiences with modern frontend tools with React, Tailwind CSS & TypeScript.";
 
   return (
-    <section id="about" className="py-20 px-4 max-w-5xl mx-auto min-h-screen flex flex-col justify-center items-center text-center">
+    <section id="about" className="relative py-20 px-4 max-w-5xl mx-auto min-h-screen flex flex-col justify-center items-center text-center">
       <h2 className="text-6xl font-bold mb-20">In Brief</h2>
-      <div className="text-2xl text-white/70 space-y-16 leading-relaxed max-w-4xl">
+      <div className="relative z-10 text-2xl text-white/70 space-y-16 leading-relaxed max-w-4xl">
         <ScrollFloat 
           animationDuration={1} 
           start="top 90%" 
@@ -29,6 +29,7 @@ export default function About() {
           {bioPara2}
         </ScrollFloat>
       </div>
+      
     </section>
   )
 }
