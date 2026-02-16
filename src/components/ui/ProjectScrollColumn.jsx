@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { motion, useMotionValue, useScroll } from 'framer-motion'
+import './NotebookCard.css'
 
 export default function ProjectScrollColumn({ items = [], gap = 28 }) {
   const containerRef = useRef(null)
@@ -48,13 +49,12 @@ export default function ProjectScrollColumn({ items = [], gap = 28 }) {
         aria-label="Projects scrolling column"
       >
         {items.map((item, i) => (
-          <div key={i} className="shrink-0" style={{ marginBottom: gap }}>
-            <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-5 text-white/90 hover:bg-white/10 transition-colors">
-              <div className="flex items-center gap-3 mb-3">
-                {item.icon && <item.icon className="text-xl text-white/80" />}
-                <h3 className="text-lg font-semibold">{item.title}</h3>
-              </div>
-              <p className="text-sm text-white/70 leading-relaxed">{item.description}</p>
+          <div key={i} className="shrink-0 flex justify-center" style={{ marginBottom: gap }}>
+            <div className="notebook-page">
+              <div className="notebook-margin" />
+              <p>
+                <strong>{item.title}.</strong> {item.description}
+              </p>
             </div>
           </div>
         ))}

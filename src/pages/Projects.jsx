@@ -1,4 +1,4 @@
-import ProjectScrollColumn from '../components/ui/ProjectScrollColumn';
+import '../components/ui/NotebookCard.css';
 import { 
   SiReact, 
   SiNodedotjs, 
@@ -33,15 +33,23 @@ export default function Projects() {
   return (
     <section id="projects" className="py-20 px-4 max-w-6xl mx-auto min-h-screen">
       <h2 className="text-4xl font-bold mb-12 text-center">Featured Projects</h2>
-      <ProjectScrollColumn
-        items={[
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
+        {[ 
           ...projects,
           { title: "Serverless Chat App", description: "Realtime messaging using Firebase/Socket.io with auth and presence.", icon: SiFirebase },
           { title: "API Gateway", description: "Node.js gateway with rate limiting, caching and observability.", icon: SiNodedotjs },
           { title: "Data Pipelines", description: "Python ETL pipelines for analytics and reporting.", icon: SiPython }
-        ]}
-        gap={20}
-      />
+        ].map((item, index) => (
+          <div key={index} className="flex justify-center">
+            <div className="notebook-page">
+              <div className="notebook-margin" />
+              <p>
+                <strong>{item.title}.</strong> {item.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
     </section>
   )
 }
