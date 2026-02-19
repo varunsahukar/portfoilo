@@ -1,4 +1,3 @@
-import '../components/ui/NotebookCard.css';
 import { 
   SiReact, 
   SiNodedotjs, 
@@ -41,11 +40,16 @@ export default function Projects() {
           { title: "Data Pipelines", description: "Python ETL pipelines for analytics and reporting.", icon: SiPython }
         ].map((item, index) => (
           <div key={index} className="flex justify-center">
-            <div className="notebook-page">
-              <div className="notebook-margin" />
-              <p>
-                <strong>{item.title}.</strong> {item.description}
-              </p>
+            <div className="project-card">
+              <div className="project-card-content">
+                <p className="project-card-heading">{item.title}</p>
+                <p className="project-card-para">
+                  {item.description}
+                </p>
+                <button className="project-card-btn">
+                  Read more
+                </button>
+              </div>
             </div>
           </div>
         ))}
