@@ -49,7 +49,7 @@ export default function Projects() {
           const Icon = item.icon;
           return (
             <div key={index} className="flex justify-center">
-              <div className="w-[310px] p-6 bg-[#1E293B] border border-[#27344a] rounded-lg space-y-4">
+              <div className="w-[310px] p-6 bg-[#1E293B] border border-[#27344a] rounded-lg flex flex-col">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 flex items-center justify-center rounded-md bg-slate-800">
@@ -67,24 +67,24 @@ export default function Projects() {
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <a
-                      href={item.liveUrl || "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 rounded-full bg-sky-500 hover:bg-sky-400 text-xs font-semibold text-white px-3 py-1 transition-colors"
-                    >
-                      <span>Go live</span>
-                      <span className="text-[10px]">↗</span>
-                    </a>
-                    <button className="w-5 text-slate-400 hover:text-sky-400 duration-200">
-                      <SiGithub className="w-5 h-5" />
-                    </button>
-                  </div>
+                  <button className="w-5 text-slate-400 hover:text-sky-400 duration-200">
+                    <SiGithub className="w-5 h-5" />
+                  </button>
                 </div>
-                <p className="text-slate-300 text-sm leading-relaxed">
+                <p className="text-slate-300 text-sm leading-relaxed mt-4 flex-1">
                   {item.description}
                 </p>
+                <div className="mt-4 flex justify-end">
+                  <a
+                    href={item.liveUrl || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 rounded-full bg-blue-600 hover:bg-blue-500 text-xs font-semibold text-white px-4 py-1.5 transition-colors"
+                  >
+                    <span>Go live</span>
+                    <span className="text-[10px]">↗</span>
+                  </a>
+                </div>
               </div>
             </div>
           );
