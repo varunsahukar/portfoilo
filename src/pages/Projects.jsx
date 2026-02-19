@@ -14,19 +14,22 @@ export default function Projects() {
       title: "E-commerce Platform",
       description: "A full-scale online store with secure payments, real-time inventory tracking, and an intuitive admin dashboard.",
       icon: SiReact,
-      rotation: -2
+      rotation: -2,
+      liveUrl: "#"
     },
     {
       title: "Task Management App",
       description: "Collaborative tool for teams to manage projects, track time, and automate workflows with ease.",
       icon: SiVuedotjs,
-      rotation: 1.5
+      rotation: 1.5,
+      liveUrl: "#"
     },
     {
       title: "Analytics Dashboard",
       description: "Real-time data visualization platform processing millions of data points for actionable business insights.",
       icon: SiD3Dotjs,
-      rotation: -1
+      rotation: -1,
+      liveUrl: "#"
     }
   ];
 
@@ -39,9 +42,9 @@ export default function Projects() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
         {[ 
           ...projects,
-          { title: "Serverless Chat App", description: "Realtime messaging using Firebase/Socket.io with auth and presence.", icon: SiFirebase },
-          { title: "API Gateway", description: "Node.js gateway with rate limiting, caching and observability.", icon: SiNodedotjs },
-          { title: "Data Pipelines", description: "Python ETL pipelines for analytics and reporting.", icon: SiPython }
+          { title: "Serverless Chat App", description: "Realtime messaging using Firebase/Socket.io with auth and presence.", icon: SiFirebase, liveUrl: "#" },
+          { title: "API Gateway", description: "Node.js gateway with rate limiting, caching and observability.", icon: SiNodedotjs, liveUrl: "#" },
+          { title: "Data Pipelines", description: "Python ETL pipelines for analytics and reporting.", icon: SiPython, liveUrl: "#" }
         ].map((item, index) => {
           const Icon = item.icon;
           return (
@@ -64,9 +67,20 @@ export default function Projects() {
                       </p>
                     </div>
                   </div>
-                  <button className="w-5 text-slate-400 hover:text-sky-400 duration-200">
-                    <SiGithub className="w-5 h-5" />
-                  </button>
+                  <div className="flex items-center gap-3">
+                    <a
+                      href={item.liveUrl || "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 rounded-full bg-sky-500 hover:bg-sky-400 text-xs font-semibold text-white px-3 py-1 transition-colors"
+                    >
+                      <span>Go live</span>
+                      <span className="text-[10px]">↗</span>
+                    </a>
+                    <button className="w-5 text-slate-400 hover:text-sky-400 duration-200">
+                      <SiGithub className="w-5 h-5" />
+                    </button>
+                  </div>
                 </div>
                 <p className="text-slate-300 text-sm leading-relaxed">
                   {item.description}
