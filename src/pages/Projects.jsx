@@ -49,41 +49,43 @@ export default function Projects() {
           const Icon = item.icon;
           return (
             <div key={index} className="flex justify-center">
-              <div className="w-[310px] p-6 bg-[#1E293B] border border-[#27344a] rounded-lg flex flex-col">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 flex items-center justify-center rounded-md bg-slate-800">
-                      {Icon && <Icon className="w-7 h-7 text-sky-300" />}
+              <div className="w-[310px] p-[1px] rounded-2xl bg-black/60 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.85)]">
+                <div className="rounded-2xl bg-black/70 flex flex-col h-full px-5 py-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5">
+                        {Icon && <Icon className="w-7 h-7 text-sky-400" />}
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[11px] tracking-[0.18em] uppercase text-white/40 mb-0.5">
+                          Project
+                        </span>
+                        <p className="text-white font-semibold text-base">
+                          {item.title}
+                        </p>
+                        <p className="text-white/40 text-xs">
+                          Featured project
+                        </p>
+                      </div>
                     </div>
-                    <div className="flex flex-col">
-                      <span className="text-[11px] tracking-[0.18em] uppercase text-slate-500 mb-0.5">
-                        Project
-                      </span>
-                      <p className="text-slate-100 font-semibold text-base">
-                        {item.title}
-                      </p>
-                      <p className="text-slate-500 text-xs">
-                        Featured project
-                      </p>
-                    </div>
+                    <button className="w-5 text-white/40 hover:text-white duration-200">
+                      <SiGithub className="w-5 h-5" />
+                    </button>
                   </div>
-                  <button className="w-5 text-slate-400 hover:text-sky-400 duration-200">
-                    <SiGithub className="w-5 h-5" />
-                  </button>
-                </div>
-                <p className="text-slate-300 text-sm leading-relaxed mt-4 flex-1">
-                  {item.description}
-                </p>
-                <div className="mt-4 flex justify-end">
-                  <a
-                    href={item.liveUrl || "#"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 rounded-full bg-blue-600 hover:bg-blue-500 text-xs font-semibold text-white px-4 py-1.5 transition-colors"
-                  >
-                    <span>Go live</span>
-                    <span className="text-[10px]">↗</span>
-                  </a>
+                  <p className="text-white/60 text-sm leading-relaxed mt-4 flex-1">
+                    {item.description}
+                  </p>
+                  <div className="mt-4 flex justify-end">
+                    <a
+                      href={item.liveUrl || "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 rounded-full bg-blue-600/90 hover:bg-blue-500 text-xs font-semibold text-white px-4 py-1.5 transition-colors"
+                    >
+                      <span>Go live</span>
+                      <span className="text-[10px]">↗</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

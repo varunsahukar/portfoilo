@@ -18,38 +18,40 @@ export default function Navbar() {
       <nav className="fixed top-4 left-0 right-0 z-50 w-full">
         <div className="relative w-full">
           <div className="hidden md:flex items-center justify-center">
-            <div className="inline-flex items-center gap-4 px-6 py-2.5 rounded-full bg-black/60 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.85)]">
-              {[...left, ...right].map((link) => (
+            <div className="inline-flex p-[1px] rounded-full bg-black/60 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.85)]">
+              <div className="inline-flex items-center gap-4 px-6 py-2.5 rounded-full bg-black/80">
+                {[...left, ...right].map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="nav-link-curly px-2.5 py-1.5 text-sm text-white/80 hover:text-white rounded-full transition-colors"
+                  >
+                    {link.name}
+                  </a>
+                ))}
+                <span className="h-5 w-px bg-white/10" />
                 <a
-                  key={link.name}
-                  href={link.href}
-                  className="nav-link-curly px-2.5 py-1.5 text-sm text-white/80 hover:text-white rounded-full transition-colors"
+                  href="#contact"
+                  className="px-3 py-1.5 text-xs font-medium rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center gap-1 transition-colors"
                 >
-                  {link.name}
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <path d="M7 10l5 5 5-5" />
+                    <path d="M12 15V3" />
+                  </svg>
+                  Resume
                 </a>
-              ))}
-              <span className="h-5 w-px bg-white/10" />
-              <a
-                href="#contact"
-                className="px-3 py-1.5 text-xs font-medium rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center gap-1 transition-colors"
-              >
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <path d="M7 10l5 5 5-5" />
-                  <path d="M12 15V3" />
-                </svg>
-                Resume
-              </a>
+              </div>
             </div>
           </div>
 
@@ -81,19 +83,21 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            className="md:hidden fixed top-14 left-0 right-0 z-40 mx-auto w-[92vw] rounded-2xl bg-black/60 backdrop-blur-xl p-3"
+            className="md:hidden fixed top-14 left-0 right-0 z-40 mx-auto w-[92vw] p-[1px] rounded-2xl bg-black/60 backdrop-blur-xl"
           >
-            <div className="grid gap-1">
-              {navLinks.concat([{ name: 'Resume', href: '#contact' }]).map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="nav-link-curly px-3 py-2 rounded-lg text-sm text-white/80 hover:text-white transition-colors"
-                >
-                  {link.name}
-                </a>
-              ))}
+            <div className="rounded-2xl bg-black/80 p-3">
+              <div className="grid gap-1">
+                {navLinks.concat([{ name: 'Resume', href: '#contact' }]).map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className="nav-link-curly px-3 py-2 rounded-lg text-sm text-white/80 hover:text-white transition-colors"
+                  >
+                    {link.name}
+                  </a>
+                ))}
+              </div>
             </div>
           </motion.div>
         )}

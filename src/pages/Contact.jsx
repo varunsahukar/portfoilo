@@ -12,13 +12,14 @@ export default function Contact() {
         Say Hello
       </a>
 
-      <div className="absolute bottom-6 left-4 flex justify-start">
-        <div className="card flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 px-6 py-4 backdrop-blur-md shadow-xl">
+      <div className="absolute bottom-4 left-4 flex justify-start">
+        <div className="inline-flex p-[1px] rounded-2xl bg-black/60 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.85)]">
+          <div className="flex items-center gap-4 rounded-2xl bg-black/80 px-5 py-4">
           <a
             href="https://www.instagram.com/varun_sahukar19?igsh=MW1uZWR6dDd2cWM5Mg%3D%3D&utm_source=qr"
             target="_blank"
             rel="noopener noreferrer"
-            className="social-link1 p-2 rounded-full bg-white/10 hover:bg-pink-500/80 hover:scale-110 transition transform"
+            className="social-link1 p-2 rounded-full bg-white/5 hover:bg-white/15 hover:scale-110 transition transform"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +37,7 @@ export default function Contact() {
             href="mailto:varunsahukar9798@gmail.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="social-link3 p-2 rounded-full bg-white/10 hover:scale-110 transition transform text-white"
+            className="social-link3 p-2 rounded-full bg-white/5 hover:bg-white/15 hover:scale-110 transition transform text-white"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +56,7 @@ export default function Contact() {
             href="https://github.com/varunsahukar"
             target="_blank"
             rel="noopener noreferrer"
-            className="social-link2 p-2 rounded-full bg-white/10 hover:bg-white/20 hover:scale-110 transition transform"
+            className="social-link2 p-2 rounded-full bg-white/5 hover:bg-white/15 hover:scale-110 transition transform"
           >
             <svg
               viewBox="0 0 496 512"
@@ -71,7 +72,7 @@ export default function Contact() {
             href="https://www.linkedin.com/in/varunsahukar9798/"
             target="_blank"
             rel="noopener noreferrer"
-            className="social-link4 p-2 rounded-full bg-white/10 hover:bg-slate-500/80 hover:scale-110 transition transform"
+            className="social-link4 p-2 rounded-full bg-white/5 hover:bg-white/15 hover:scale-110 transition transform"
           >
             <svg
               fill="#ffffff"
@@ -83,6 +84,7 @@ export default function Contact() {
             </svg>
           </a>
 
+        </div>
         </div>
       </div>
     </section>
