@@ -1,4 +1,4 @@
-import ScrollFloat from '../components/animations/ScrollFloat';
+import ScrollRevealParagraph from '../components/animations/ScrollRevealParagraph';
 
 export default function About() {
   const bioPara1 = "I’m a software developer focused on building reliable, scalable, and well-structured applications. My journey into tech began with curiosity about how systems work behind the scenes, which naturally led me into web development. I’m particularly drawn to backend engineering — designing APIs, working with databases, and thinking deeply about system architecture.";
@@ -8,26 +8,16 @@ export default function About() {
   return (
     <section id="about" className="relative py-20 px-4 max-w-5xl mx-auto min-h-screen flex flex-col justify-center items-center text-center">
       <h2 className="text-6xl font-bold mb-20">In Brief</h2>
-      <div className="relative z-10 text-2xl text-white/70 space-y-16 leading-relaxed max-w-4xl">
-        <ScrollFloat 
-          animationDuration={1} 
-          start="top 90%" 
-          end="bottom 60%" 
-          scrub={1.2}
-          textClassName="text-white/70"
-        >
-          {bioPara1}
-        </ScrollFloat>
+      <div className="relative z-10 text-white/70 space-y-16 leading-relaxed max-w-4xl">
+        <ScrollRevealParagraph
+          paragraph={bioPara1}
+          className="text-3xl text-white/70"
+        />
 
-        <ScrollFloat 
-          animationDuration={1} 
-          start="top 85%" 
-          end="bottom 55%" 
-          scrub={1.2}
-          textClassName="text-white/70"
-        >
-          {bioPara2}
-        </ScrollFloat>
+        <ScrollRevealParagraph
+          paragraph={bioPara2}
+          className="text-3xl text-white/70"
+        />
       </div>
       
     </section>
