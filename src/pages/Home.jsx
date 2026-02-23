@@ -46,7 +46,7 @@ export default function Home() {
 
           <a
             href="#about"
-            className="inline-flex items-center mt-2 rounded-lg border border-blue-500/40 text-blue-400 px-6 py-2 text-sm font-medium bg-blue-500/10 hover:bg-blue-500/20 hover:border-blue-400 transition"
+            className="inline-flex items-center mt-2 rounded-lg px-6 py-2 text-sm font-medium bg-blue-500 text-white hover:bg-blue-400 shadow-[0_0_25px_rgba(59,130,246,0.45)] transition"
           >
             Know more
           </a>
