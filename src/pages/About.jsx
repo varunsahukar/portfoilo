@@ -54,10 +54,13 @@ export default function About() {
                 Education
               </h3>
               <p className="text-sm text-white font-semibold">
-                Information Science Engineering
+                Jain Deemed to be University
+              </p>
+              <p className="text-xs text-blue-400 font-medium mt-1">
+                Information Science and Engineering
               </p>
               <p className="text-xs text-white/50 mt-1">
-                Jain Deemed to be University. Focused on web development, distributed systems, and backend architecture.
+                Focused on web development, distributed systems, and backend architecture.
               </p>
             </div>
             <div className="rounded-3xl bg-black/60 border border-white/10 backdrop-blur-2xl px-6 py-5">
