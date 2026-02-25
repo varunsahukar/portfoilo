@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { 
   SiReact, 
   SiNodedotjs, 
@@ -35,62 +36,61 @@ export default function Projects() {
 
   return (
     <section id="projects" className="py-20 px-4 max-w-6xl mx-auto min-h-screen">
-      <h2 className="text-4xl font-bold mb-12 text-center">Featured Projects</h2>
-      <p className="max-w-2xl mx-auto mb-10 text-center text-sm text-slate-400">
-        Each card below highlights a project I’ve built, including the core tech and what it does.
-      </p>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <h2 className="text-4xl font-bold mb-12 text-center">Featured Projects</h2>
+        <p className="max-w-2xl mx-auto mb-10 text-center text-sm text-slate-400">
+          Each card below highlights a project I’ve built, including the core tech and what it does.
+        </p>
+      </motion.div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
         {[ 
           ...projects,
           { title: "Serverless Chat App", description: "Realtime messaging using Firebase/Socket.io with auth and presence.", icon: SiFirebase, liveUrl: "#" },
-          { title: "API Gateway", description: "Node.js gateway with rate limiting, caching and observability.", icon: SiNodedotjs, liveUrl: "#" },
-          { title: "Data Pipelines", description: "Python ETL pipelines for analytics and reporting.", icon: SiPython, liveUrl: "#" }
-        ].map((item, index) => {
-          const Icon = item.icon;
-          return (
-            <div key={index} className="flex justify-center">
-              <div className="w-[310px] p-[1px] rounded-2xl bg-black/60 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.85)]">
-                <div className="rounded-2xl bg-black/70 flex flex-col h-full px-5 py-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 flex items-center justify-center rounded-xl bg-white/5">
-                        {Icon && <Icon className="w-7 h-7 text-sky-400" />}
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-[11px] tracking-[0.18em] uppercase text-white/40 mb-0.5">
-                          Project
-                        </span>
-                        <p className="text-white font-semibold text-base">
-                          {item.title}
-                        </p>
-                        <p className="text-white/40 text-xs">
-                          Featured project
-                        </p>
-                      </div>
-                    </div>
-                    <button className="w-5 text-white/40 hover:text-white duration-200">
-                      <SiGithub className="w-5 h-5" />
-                    </button>
-                  </div>
-                  <p className="text-white/60 text-sm leading-relaxed mt-4 flex-1">
-                    {item.description}
-                  </p>
-                  <div className="mt-4 flex justify-end">
-                    <a
-                      href={item.liveUrl || "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 rounded-full bg-blue-600/90 hover:bg-blue-500 text-xs font-semibold text-white px-4 py-1.5 transition-colors"
-                    >
-                      <span>Go live</span>
-                      <span className="text-[10px]">↗</span>
-                    </a>
-                  </div>
+          { title: "Weather Tracker", description: "Global weather forecasting using OpenWeatherMap API and Leaflet maps.", icon: SiPython, liveUrl: "#" }
+        ].map((project, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ 
+              duration: 0.5, 
+              delay: i * 0.05, 
+              ease: [0.23, 1, 0.32, 1]
+            }}
+            whileHover={{ 
+              y: -5, 
+              scale: 1.01,
+              transition: { duration: 0.2 }
+            }}
+            className="group relative w-full"
+          >
+            <div className="h-full rounded-2xl border border-white/10 bg-black/40 backdrop-blur-md p-8 text-white/90 hover:border-blue-500/50 hover:bg-blue-500/5 transition-all duration-300">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 rounded-xl bg-white/5 group-hover:bg-blue-500/10 group-hover:text-blue-400 transition-colors">
+                  {project.icon && <project.icon className="text-2xl" />}
                 </div>
+                <h3 className="text-xl font-bold tracking-tight">{project.title}</h3>
+              </div>
+              <p className="text-sm text-white/60 leading-relaxed mb-8">{project.description}</p>
+              <div className="flex items-center justify-between">
+                <a 
+                  href={project.liveUrl}
+                  className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-blue-400 hover:text-blue-300 transition-colors"
+                >
+                  View Project
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </a>
               </div>
             </div>
-          );
-        })}
+          </motion.div>
+        ))}
       </div>
     </section>
   )

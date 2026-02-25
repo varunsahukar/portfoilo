@@ -9,8 +9,8 @@ export default function About() {
     >
       <div className="relative z-10 grid lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1.1fr)] gap-10 w-full">
         <div className="relative">
-          <div className="absolute -inset-8 rounded-[32px] bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.45),transparent_60%),radial-gradient(circle_at_bottom,_rgba(147,51,234,0.35),transparent_60%)] opacity-80 blur-3xl pointer-events-none" />
-          <div className="relative rounded-[32px] bg-black/50 border border-white/10 backdrop-blur-2xl shadow-[0_20px_80px_rgba(0,0,0,0.85)] overflow-hidden flex flex-col justify-between min-h-[360px] p-8">
+          <div className="absolute -inset-8 rounded-[32px] bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.45),transparent_60%),radial-gradient(circle_at_bottom,_rgba(147,51,234,0.35),transparent_60%)] opacity-80 blur-xl pointer-events-none" />
+          <div className="relative rounded-[32px] bg-black/50 border border-white/10 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.85)] overflow-hidden flex flex-col justify-between min-h-[360px] p-8">
             <div>
               <p className="text-sm uppercase tracking-[0.3em] text-white/50 mb-4">
                 Hello, I am
@@ -36,7 +36,7 @@ export default function About() {
         </div>
 
         <div className="relative flex flex-col gap-6">
-          <div className="rounded-3xl bg-black/60 border border-white/10 backdrop-blur-2xl shadow-[0_20px_80px_rgba(0,0,0,0.85)] px-8 py-7">
+          <div className="rounded-3xl bg-black/60 border border-white/10 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.5)] px-8 py-7">
             <h3 className="text-sm font-semibold tracking-[0.28em] uppercase text-white/40 mb-3">
               About Me
             </h3>
@@ -49,7 +49,7 @@ export default function About() {
           </div>
 
           <div className="grid sm:grid-cols-2 gap-6">
-            <div className="rounded-3xl bg-black/60 border border-white/10 backdrop-blur-2xl px-6 py-5">
+            <div className="rounded-3xl bg-black/60 border border-white/10 backdrop-blur-xl px-6 py-5">
               <h3 className="text-xs font-semibold tracking-[0.28em] uppercase text-white/40 mb-3">
                 Education
               </h3>
@@ -63,7 +63,7 @@ export default function About() {
                 Focused on web development, distributed systems, and backend architecture.
               </p>
             </div>
-            <div className="rounded-3xl bg-black/60 border border-white/10 backdrop-blur-2xl px-6 py-5">
+            <div className="rounded-3xl bg-black/60 border border-white/10 backdrop-blur-xl px-6 py-5">
               <h3 className="text-xs font-semibold tracking-[0.28em] uppercase text-white/40 mb-3">
                 Experience
               </h3>
@@ -77,7 +77,7 @@ export default function About() {
             </div>
           </div>
 
-          <div className="rounded-3xl bg-black/60 border border-white/10 backdrop-blur-2xl px-6 py-5 flex flex-col gap-4">
+          <div className="rounded-3xl bg-black/60 border border-white/10 backdrop-blur-xl px-6 py-5 flex flex-col gap-4">
             <div>
               <h3 className="text-xs font-semibold tracking-[0.28em] uppercase text-white/40 mb-2">
                 Skills

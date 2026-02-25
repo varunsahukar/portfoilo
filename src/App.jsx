@@ -1,4 +1,5 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import Home from './pages/Home'
@@ -9,7 +10,45 @@ import TechStack from './pages/TechStack'
 import Contact from './pages/Contact'
 import LightRays from './components/ui/LightRays'
 
+function SectionWrapper({ children }) {
+  const ref = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  })
+
+  // Simplify animations for performance and smoother flow
+  const opacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0, 1, 1, 0])
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.98, 1, 0.98])
+  const y = useTransform(scrollYProgress, [0, 0.5, 1], [15, 0, -15])
+  
+  const springScale = useSpring(scale, { stiffness: 120, damping: 25 })
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{
+        scale: springScale,
+        y,
+        opacity
+      }}
+      className="w-full relative"
+    >
+      {children}
+    </motion.div>
+  )
+}
+
 function App() {
+  const { scrollY } = useScroll()
+  const bgY = useTransform(scrollY, [0, 3000], [0, -200])
+  const springBgY = useSpring(bgY, { stiffness: 50, damping: 20 })
+  
+  // Dynamic glow following scroll
+  const glowY = useTransform(scrollY, [0, 4000], ["0%", "100%"])
+  const glowOpacity = useTransform(scrollY, [0, 1000, 3000, 4000], [0.3, 0.6, 0.6, 0.3])
+  const springGlowY = useSpring(glowY, { stiffness: 30, damping: 20 })
+
   useEffect(() => {
     const handleClick = (event) => {
       const target = event.target
@@ -53,9 +92,10 @@ function App() {
   }, [])
 
   return (
-    <div className="min-h-screen text-white relative overflow-x-hidden">
+    <div className="min-h-screen text-white relative overflow-x-hidden bg-black">
       <div className="fixed inset-0 z-0 overflow-hidden bg-black">
         <div className="absolute inset-0 background-grid opacity-15 [mask-image:radial-gradient(80%_80%_at_50%_50%,#000_60%,transparent_100%)]" />
+        
         <div className="absolute inset-0 opacity-25">
           <LightRays
             raysOrigin="top-center"
@@ -76,17 +116,30 @@ function App() {
         <div className="pointer-events-none absolute inset-0 vignette-mask opacity-80" />
       </div>
       <Navbar />
-      <main className="relative z-10">
-        <Home />
+      <main className="relative z-10 space-y-12 py-12">
+        <SectionWrapper>
+          <Home />
+        </SectionWrapper>
+        
         <ScrollVelocity 
           texts={['WELCOME TO MY PORTFOLIO', 'WELCOME TO MY PORTFOLIO']} 
           velocity={100} 
           className="custom-scroll-text" 
         />
-        <About />
+        
+        <SectionWrapper>
+          <About />
+        </SectionWrapper>
+        
         <TechStack />
-        <Projects />
-        <Contact />
+        
+        <SectionWrapper>
+          <Projects />
+        </SectionWrapper>
+        
+        <SectionWrapper>
+          <Contact />
+        </SectionWrapper>
       </main>
       <Footer />
     </div>
