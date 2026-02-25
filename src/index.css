@@ -107,7 +107,17 @@ html {
     linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
   background-size: 24px 24px, 24px 24px;
-  background-position: -1px -1px, -1px -1px;
+  background-position: 0 0;
+  animation: gridScroll 20s linear infinite;
+}
+
+@keyframes gridScroll {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 24px 24px;
+  }
 }
 
 .vignette-mask {

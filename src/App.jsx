@@ -54,9 +54,9 @@ function App() {
 
   return (
     <div className="min-h-screen text-white relative overflow-x-hidden">
-      <div className="fixed inset-0 z-0 overflow-hidden">
-        <div className="absolute inset-0 background-grid opacity-20 [mask-image:radial-gradient(80%_80%_at_50%_50%,#000_60%,transparent_100%)]" />
-        <div className="absolute inset-0 opacity-45">
+      <div className="fixed inset-0 z-0 overflow-hidden bg-black">
+        <div className="absolute inset-0 background-grid opacity-15 [mask-image:radial-gradient(80%_80%_at_50%_50%,#000_60%,transparent_100%)]" />
+        <div className="absolute inset-0 opacity-25">
           <LightRays
             raysOrigin="top-center"
             raysColor="#bcc1c6ff"
@@ -73,7 +73,7 @@ function App() {
             saturation={1.2}
           />
         </div>
-        <div className="pointer-events-none absolute inset-0 vignette-mask" />
+        <div className="pointer-events-none absolute inset-0 vignette-mask opacity-80" />
       </div>
       <Navbar />
       <main className="relative z-10">
