@@ -108,7 +108,7 @@ export default function Contact() {
                   <div className="mt-1 w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]" />
                   <div>
                     <p className="text-sm font-bold text-white/90">Availability</p>
-                    <p className="text-xs text-white/40">Open for new projects & full-time roles.</p>
+                    <p className="text-xs text-white/40">Open for new projects & internships.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
