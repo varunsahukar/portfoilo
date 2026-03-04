@@ -103,7 +103,9 @@ export default function Projects() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="text-4xl font-bold mb-12 text-center">WORK SPACE</h2>
+        <h2 className="text-5xl md:text-8xl font-black mb-12 text-center tracking-tighter uppercase bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">
+          WORK SPACE
+        </h2>
         <p className="max-w-2xl mx-auto mb-10 text-center text-sm text-slate-400">
           Click on any card below to see more details.
         </p>

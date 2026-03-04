@@ -15,7 +15,7 @@ export default function About() {
               <p className="text-sm uppercase tracking-[0.3em] text-white/50 mb-4">
                 Hello, I am
               </p>
-              <h2 className="text-4xl md:text-5xl font-extrabold leading-tight">
+              <h2 className="text-5xl md:text-7xl font-black tracking-tighter uppercase leading-none bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">
                 Varun
                 <span className="block text-blue-500">Sahukar</span>
               </h2>

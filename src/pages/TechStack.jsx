@@ -27,9 +27,11 @@ export default function TechStack() {
   ];
 
   return (
-    <section id="skills" className="py-20 overflow-hidden bg-black/20">
-      <div className="max-w-6xl mx-auto px-4 mb-12">
-        <h2 className="text-3xl font-bold text-center opacity-80">Tech Stack</h2>
+    <section id="skills" className="py-24 overflow-hidden bg-black/20">
+      <div className="max-w-6xl mx-auto px-4 mb-16">
+        <h2 className="text-5xl md:text-8xl font-black text-center tracking-tighter uppercase bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">
+          Tech Stack
+        </h2>
       </div>
       <div className="relative">
         <LogoLoop

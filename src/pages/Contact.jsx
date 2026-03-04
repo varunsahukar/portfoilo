@@ -1,92 +1,183 @@
+import { motion } from 'framer-motion';
+import { SiInstagram, SiGithub, SiLinkedin, SiGmail } from 'react-icons/si';
+import { useState } from 'react';
+
 export default function Contact() {
+  const [copied, setCopied] = useState(false);
+  const email = "varunsahukar9798@gmail.com";
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const socials = [
+    {
+      name: 'Instagram',
+      icon: SiInstagram,
+      link: 'https://www.instagram.com/varun_sahukar19?igsh=MW1uZWR6dDd2cWM5Mg%3D%3D&utm_source=qr',
+      handle: '@varun_sahukar19',
+      color: 'hover:text-pink-500',
+      glow: 'group-hover:shadow-pink-500/20'
+    },
+    {
+      name: 'GitHub',
+      icon: SiGithub,
+      link: 'https://github.com/varunsahukar',
+      handle: 'varunsahukar',
+      color: 'hover:text-white',
+      glow: 'group-hover:shadow-white/20'
+    },
+    {
+      name: 'LinkedIn',
+      icon: SiLinkedin,
+      link: 'https://www.linkedin.com/in/varunsahukar9798/',
+      handle: 'Varun Sahukar',
+      color: 'hover:text-blue-500',
+      glow: 'group-hover:shadow-blue-500/20'
+    }
+  ];
+
   return (
-    <section id="contact" className="relative py-20 px-4 max-w-4xl mx-auto min-h-screen flex flex-col items-center justify-center text-center">
-      <h2 className="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight">Let's work together</h2>
-      <p className="text-white/60 mb-10 text-lg max-w-lg">
-        Have a project in mind? Reach out and let's build something amazing.
-      </p>
-      <a 
-        href="mailto:varunsahukar9798@gmail.com" 
-        className="inline-block bg-blue-600 text-white px-10 py-4 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-900/20"
+    <section id="contact" className="relative py-32 px-4 max-w-6xl mx-auto min-h-screen flex flex-col items-center justify-center">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="text-center mb-16"
       >
-        Say Hello
-      </a>
+        <h2 className="text-5xl md:text-8xl font-black mb-6 tracking-tighter bg-gradient-to-b from-white to-white/20 bg-clip-text text-transparent">
+          LET'S CONNECT.
+        </h2>
+        <p className="text-white/50 text-lg md:text-xl max-w-xl mx-auto font-medium leading-relaxed italic">
+          "The best way to predict the future is to invent it."
+        </p>
+      </motion.div>
 
-      <div className="absolute bottom-4 left-4 flex justify-start">
-        <div className="inline-flex p-[1px] rounded-2xl bg-black/60 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.85)]">
-          <div className="flex items-center gap-4 rounded-2xl bg-black/80 px-5 py-4">
-          <a
-            href="https://www.instagram.com/varun_sahukar19?igsh=MW1uZWR6dDd2cWM5Mg%3D%3D&utm_source=qr"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-link1 p-2 rounded-full bg-white/5 hover:bg-white/15 hover:scale-110 transition transform"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 16 16"
-              fill="currentColor"
-              className="text-white"
-            >
-              <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
-            </svg>
-          </a>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl">
+        {/* Email Card */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="group relative md:col-span-1"
+        >
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-3xl blur opacity-10 group-hover:opacity-20 transition duration-1000"></div>
+          <div className="relative h-full flex flex-col justify-between p-8 rounded-3xl bg-black/40 border border-white/10 backdrop-blur-2xl">
+            <div>
+              <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6 text-blue-400">
+                <SiGmail size={24} />
+              </div>
+              <h3 className="text-2xl font-bold mb-2 text-white">Direct Message</h3>
+              <p className="text-white/40 text-sm mb-6 leading-relaxed">Have a specific proposal or just want to say hi? My inbox is always open.</p>
+            </div>
+            
+            <div className="flex flex-col gap-3">
+              <a 
+                href={`mailto:${email}`}
+                className="w-full py-4 rounded-2xl bg-blue-600 text-white font-bold text-center hover:bg-blue-500 transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-900/20"
+              >
+                Send Email
+              </a>
+              <button 
+                onClick={handleCopy}
+                className="w-full py-4 rounded-2xl bg-white/5 border border-white/10 text-white font-semibold hover:bg-white/10 transition-all flex items-center justify-center gap-2"
+              >
+                {copied ? 'Copied!' : 'Copy Address'}
+              </button>
+            </div>
+          </div>
+        </motion.div>
 
-          <a
-            href="mailto:varunsahukar9798@gmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-link3 p-2 rounded-full bg-white/5 hover:bg-white/15 hover:scale-110 transition transform text-white"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              fill="currentColor"
-              viewBox="0 0 16 16"
-              className="bi bi-envelope-at-fill"
-            >
-              <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2zm-2 9.8V4.698l5.803 3.546zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.5 4.5 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586zM16 9.671V4.697l-5.803 3.546.338.208A4.5 4.5 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671" />
-              <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034z" />
-            </svg>
-          </a>
+        {/* Availability Card */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="relative md:col-span-1"
+        >
+          <div className="h-full p-8 rounded-3xl bg-black/40 border border-white/10 backdrop-blur-2xl flex flex-col justify-between border-t-blue-500/30">
+            <div>
+              <h3 className="text-2xl font-bold mb-4 text-white">Quick Info</h3>
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="mt-1 w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.5)]" />
+                  <div>
+                    <p className="text-sm font-bold text-white/90">Availability</p>
+                    <p className="text-xs text-white/40">Open for new projects & full-time roles.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="mt-1 w-2 h-2 rounded-full bg-blue-500" />
+                  <div>
+                    <p className="text-sm font-bold text-white/90">Location</p>
+                    <p className="text-xs text-white/40">Bengaluru, India (Available for Remote)</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="mt-1 w-2 h-2 rounded-full bg-purple-500" />
+                  <div>
+                    <p className="text-sm font-bold text-white/90">Response Time</p>
+                    <p className="text-xs text-white/40">Usually within 24 hours.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="pt-8 mt-8 border-t border-white/5">
+              <p className="text-[10px] uppercase tracking-[0.2em] text-white/20 font-bold mb-2">Current Focus</p>
+              <p className="text-sm text-white/60 font-medium">Building scalable web architectures & immersive UI experiences.</p>
+            </div>
+          </div>
+        </motion.div>
 
-          <a
-            href="https://github.com/varunsahukar"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-link2 p-2 rounded-full bg-white/5 hover:bg-white/15 hover:scale-110 transition transform"
-          >
-            <svg
-              viewBox="0 0 496 512"
-              height="20"
-              fill="#ffffff"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z" />
-            </svg>
-          </a>
+        {/* Socials Card */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="relative md:col-span-1"
+        >
+          <div className="h-full p-8 rounded-3xl bg-black/40 border border-white/10 backdrop-blur-2xl flex flex-col justify-between">
+            <div>
+              <h3 className="text-2xl font-bold mb-2 text-white">Social Presence</h3>
+              <p className="text-white/40 text-sm mb-8 italic">Let's build a network.</p>
+            </div>
 
-          <a
-            href="https://www.linkedin.com/in/varunsahukar9798/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-link4 p-2 rounded-full bg-white/5 hover:bg-white/15 hover:scale-110 transition transform"
-          >
-            <svg
-              fill="#ffffff"
-              viewBox="0 0 448 512"
-              height="20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z" />
-            </svg>
-          </a>
-
-        </div>
-        </div>
+            <div className="grid grid-cols-1 gap-3">
+              {socials.map((social, i) => (
+                <a 
+                  key={i}
+                  href={social.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-white/20 hover:bg-white/10 transition-all"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className={`p-3 rounded-xl bg-black/40 text-white/60 ${social.color} transition-colors shadow-lg ${social.glow}`}>
+                      <social.icon size={20} />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-white/80 group-hover:text-white transition-colors">
+                        {social.name}
+                      </p>
+                      <p className="text-[10px] text-white/30 font-mono">{social.handle}</p>
+                    </div>
+                  </div>
+                  <div className="text-white/10 group-hover:text-white/40 transition-colors transform group-hover:translate-x-1 duration-300">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
-  )
+  );
 }
