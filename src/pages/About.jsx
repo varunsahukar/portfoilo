@@ -9,7 +9,7 @@ export default function About() {
     >
       <div className="relative z-10 grid lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1.1fr)] gap-10 w-full">
         <div className="relative">
-          <div className="absolute -inset-8 rounded-[32px] bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.45),transparent_60%)] opacity-80 blur-xl pointer-events-none" />
+          <div className="absolute -inset-8 rounded-[32px] bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.45),transparent_60%),radial-gradient(circle_at_bottom,_rgba(59,130,246,0.35),transparent_60%)] opacity-80 blur-xl pointer-events-none" />
           <div className="relative rounded-[32px] bg-black/50 border border-white/10 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.85)] overflow-hidden flex flex-col justify-between min-h-[360px] p-8">
             <div>
               <p className="text-sm uppercase tracking-[0.3em] text-white/50 mb-4">
