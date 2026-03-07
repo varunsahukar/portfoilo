@@ -12,19 +12,20 @@ Focus: clean grid-based layout, smooth motion, and a professional dark theme.
 - Contact page with animated social links and mail shortcut
 
 ## Tech Stack
-
 - React + Vite
 - Tailwind CSS
 - Framer Motion
+- GSAP
+- OGL
+- Lucide React
 - React Icons
 
 ## Getting Started
-
-Clone the repository and install dependencies:
+Requires Node.js 18+. Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/varunsahukar/portfoilo.git
-cd portfoilo
+git clone https://github.com/varunsahukar/portfolio.git
+cd portfolio
 npm install
 ```
 
@@ -47,10 +48,14 @@ npm run preview
 ```
 
 ## Project Structure
-
 - `src/pages` – top-level pages (Home, About, Projects, Tech Stack, Contact)
 - `src/components/layout` – layout elements like the navbar
 - `src/components/ui` – reusable UI pieces (project cards, scroll columns, etc.)
+- `src/components/animations` – scroll and reveal animations
+- `src/data` – project and skills data
+- `src/hooks` – reusable hooks (e.g., scroll)
+- `src/lib` – utility helpers
+- `src/utils` – constants and helpers
 - `src/assets` – static assets such as your profile image
 
 ## Contact
