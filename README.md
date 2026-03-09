@@ -5,7 +5,7 @@ Focus: clean grid-based layout, smooth motion, and a professional dark theme.
 
 ## Features
 
-- Dynamic island style navbar with blurred glass background
+- Dynamic island-style navbar with blurred glass background
 - 3D hover hero image card with cropped portrait
 - Projects section with notebook-style cards
 - Tech stack loop and skills sections
