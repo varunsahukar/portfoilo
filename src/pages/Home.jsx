@@ -1,5 +1,6 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { AnimatePresence, motion, useScroll, useTransform, useSpring, useMotionTemplate } from 'framer-motion';
+import stickerImg from '../assets/images/me.png';
 
 const headlines = [
   'Building thoughtful web experiences.',
@@ -10,6 +11,9 @@ const headlines = [
 export default function Home() {
   const [index, setIndex] = useState(0);
   const containerRef = useRef(null);
+  const [stickerOpen, setStickerOpen] = useState(false);
+  const handleStickerClick = useCallback(() => setStickerOpen(true), []);
+  const handleStickerClose = useCallback(() => setStickerOpen(false), []);
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -35,6 +39,66 @@ export default function Home() {
       id="home"
       className="relative pt-32 pb-20 px-4 max-w-6xl mx-auto min-h-screen flex items-center"
     >
+      <motion.div 
+        className="absolute right-2 bottom-16 md:right-6 md:bottom-24 z-20 -rotate-[2deg] cursor-pointer"
+        animate={{ y: [-6, 0, -6], rotate: [-2, -1.2, -2] }}
+        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+        onClick={handleStickerClick}
+      >
+        <img
+          src={stickerImg}
+          alt="Sticker"
+          className="w-56 md:w-72 rounded-xl shadow-[0_40px_100px_rgba(0,0,0,0.65)]"
+        />
+      </motion.div>
+      
+      <AnimatePresence>
+        {stickerOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-30 bg-black/45 backdrop-blur-md"
+            onClick={handleStickerClose}
+          >
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 20, opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="absolute right-6 bottom-24 md:right-10 md:bottom-32 max-w-md w-[92%] md:w-[480px] rounded-2xl border border-white/15 bg-black/40 p-6 shadow-[0_30px_80px_rgba(0,0,0,0.65)]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-start gap-4">
+                <img src={stickerImg} alt="Sticker" className="w-20 h-20 rounded-xl object-cover shadow-[0_10px_30px_rgba(0,0,0,0.35)]" />
+                <div>
+                  <h3 className="text-white text-xl font-bold">Role at GDG</h3>
+                  <p className="text-green-400 text-sm font-semibold mt-1">Graphic Designer 2025–2026</p>
+                </div>
+              </div>
+              
+              <div className="mt-4 text-sm text-white/70 leading-relaxed">
+                <p>
+                  Google Developer Groups (GDG) are community-led developer groups for people who are interested in Google’s developer technologies and platforms. Chapters host talks, workshops, hackathons, and help members grow skills through collaboration.
+                </p>
+                <p className="mt-3">
+                  As a Graphic Designer, responsibilities include brand-aligned visuals for events, social assets, presentation design, and supporting content that improves reach and community engagement.
+                </p>
+              </div>
+              
+              <div className="mt-6 flex justify-end">
+                <button
+                  onClick={handleStickerClose}
+                  className="px-4 py-2 rounded-lg bg-white/10 border border-white/15 text-white hover:bg-white/15 transition"
+                >
+                  Close
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       <div className="relative z-10 w-full">
         <div className="flex flex-col items-start text-left gap-8">
           <motion.div 

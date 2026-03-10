@@ -28,7 +28,7 @@ export default function About() {
                 <img
                   src={userPhoto}
                   alt="Varun"
-                  className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top scale-110"
                 />
               </div>
             </div>
