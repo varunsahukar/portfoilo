@@ -90,9 +90,9 @@ export default function Projects() {
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
-            className="fixed top-0 left-0 w-12 h-12 bg-blue-500/20 border border-blue-500/50 rounded-full flex items-center justify-center pointer-events-none z-[60] backdrop-blur-[2px]"
+            className="fixed top-0 left-0 w-12 h-12 bg-[rgba(232,183,46,0.2)] border border-[rgba(232,183,46,0.5)] rounded-full flex items-center justify-center pointer-events-none z-[60] backdrop-blur-[2px]"
           >
-            <span className="text-[8px] font-bold uppercase tracking-widest text-blue-400">Click</span>
+            <span className="text-[8px] font-bold uppercase tracking-widest text-[#e8b72e]">Click</span>
           </motion.div>
         )}
       </AnimatePresence>
@@ -132,7 +132,7 @@ export default function Projects() {
             }}
             className="group relative w-full cursor-pointer font-mono"
           >
-            <div className="h-full rounded-xl border border-white/10 bg-black/80 shadow-2xl overflow-hidden transition-all duration-300 group-hover:border-blue-500/30">
+            <div className="h-full rounded-xl border border-white/10 bg-black/80 shadow-2xl overflow-hidden transition-all duration-300 group-hover:border-[rgba(232,183,46,0.3)]">
               {/* Terminal Title Bar */}
               <div className="flex items-center justify-between px-4 py-2 bg-white/5 border-b border-white/5">
                 <div className="flex gap-1.5">
@@ -147,7 +147,7 @@ export default function Projects() {
                 <div className="flex items-center gap-3 mb-4">
                   <motion.div 
                     layoutId={`icon-${project.id}`}
-                    className="text-blue-400"
+                    className="text-[#e8b72e]"
                   >
                     {project.icon && <project.icon className="text-xl" />}
                   </motion.div>
@@ -157,7 +157,7 @@ export default function Projects() {
                 </div>
                 
                 <div className="flex gap-2 text-sm">
-                  <span className="text-blue-500 font-bold">$</span>
+                  <span className="text-[#e8b72e] font-bold">$</span>
                   <motion.p layoutId={`desc-${project.id}`} className="text-white/60 leading-relaxed line-clamp-3">
                     {project.description}
                   </motion.p>
@@ -207,7 +207,7 @@ export default function Projects() {
                     <div className="flex items-center gap-6">
                       <motion.div 
                         layoutId={`icon-${selectedId}`}
-                        className="text-blue-400"
+                    className="text-[#e8b72e]"
                       >
                         {selectedProject.icon && <selectedProject.icon className="text-5xl" />}
                       </motion.div>
@@ -220,7 +220,7 @@ export default function Projects() {
                     </div>
 
                     <div className="flex gap-4">
-                      <span className="text-blue-500 font-bold text-xl">$</span>
+                      <span className="text-[#e8b72e] font-bold text-xl">$</span>
                       <motion.p 
                         layoutId={`desc-${selectedId}`}
                         className="text-lg text-white/80 leading-relaxed"
@@ -239,7 +239,7 @@ export default function Projects() {
                         href={selectedProject.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold transition-all"
+                        className="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-[#e8b72e] hover:bg-[#f0c955] text-black font-bold transition-all shadow-[0_0_15px_rgba(232,183,46,0.2)]"
                       >
                         ./run_demo.sh
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>

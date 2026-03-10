@@ -52,7 +52,7 @@ export default function Home() {
                 animate={{ opacity: 1, y: '0%' }}
                 exit={{ opacity: 0, y: '-60%' }}
                 transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                className="text-6xl md:text-8xl font-extrabold tracking-tight bg-gradient-to-r from-blue-500 via-blue-200 to-white bg-clip-text text-transparent"
+                className="text-6xl md:text-8xl font-extrabold tracking-tight bg-gradient-to-r from-[#e8b72e] via-[#e8b72e] to-white bg-clip-text text-transparent"
               >
                 {headlines[index]}
               </motion.h1>
@@ -65,7 +65,7 @@ export default function Home() {
 
           <a
             href="#about"
-            className="inline-flex items-center mt-2 rounded-lg px-6 py-2 text-sm font-medium bg-blue-500 text-white hover:bg-blue-400 shadow-[0_0_25px_rgba(59,130,246,0.45)] transition"
+            className="inline-flex items-center mt-2 rounded-lg px-6 py-2 text-sm font-medium bg-[#e8b72e] text-black hover:bg-[#f0c955] shadow-[0_0_25px_rgba(232,183,46,0.45)] transition"
           >
             Know more
           </a>

@@ -34,8 +34,8 @@ export default function Contact() {
       icon: SiLinkedin,
       link: 'https://www.linkedin.com/in/varunsahukar9798/',
       handle: 'Varun Sahukar',
-      color: 'hover:text-blue-500',
-      glow: 'group-hover:shadow-blue-500/20'
+      color: 'hover:text-[#e8b72e]',
+      glow: 'group-hover:shadow-[0_0_20px_rgba(232,183,46,0.2)]'
     }
   ];
 
@@ -65,10 +65,10 @@ export default function Contact() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="group relative md:col-span-1"
         >
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-3xl blur opacity-10 group-hover:opacity-20 transition duration-1000"></div>
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-[#e8b72e] to-[#e8b72e] rounded-3xl blur opacity-10 group-hover:opacity-20 transition duration-1000"></div>
           <div className="relative h-full flex flex-col justify-between p-8 rounded-3xl bg-black/40 border border-white/10 backdrop-blur-2xl">
             <div>
-              <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6 text-blue-400">
+              <div className="w-12 h-12 rounded-2xl bg-[#e8b72e]/10 flex items-center justify-center mb-6 text-[#e8b72e]">
                 <SiGmail size={24} />
               </div>
               <h3 className="text-2xl font-bold mb-2 text-white">Direct Message</h3>
@@ -78,7 +78,7 @@ export default function Contact() {
             <div className="flex flex-col gap-3">
               <a 
                 href={`mailto:${email}`}
-                className="w-full py-4 rounded-2xl bg-blue-600 text-white font-bold text-center hover:bg-blue-500 transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-900/20"
+                className="w-full py-4 rounded-2xl bg-[#e8b72e] text-black font-bold text-center hover:bg-[#f0c955] transition-all flex items-center justify-center gap-2 shadow-lg shadow-[0_0_15px_rgba(232,183,46,0.2)]"
               >
                 Send Email
               </a>
@@ -100,7 +100,7 @@ export default function Contact() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="relative md:col-span-1"
         >
-          <div className="h-full p-8 rounded-3xl bg-black/40 border border-white/10 backdrop-blur-2xl flex flex-col justify-between border-t-blue-500/30">
+          <div className="h-full p-8 rounded-3xl bg-black/40 border border-white/10 backdrop-blur-2xl flex flex-col justify-between border-t-[rgba(232,183,46,0.3)]">
             <div>
               <h3 className="text-2xl font-bold mb-4 text-white">Quick Info</h3>
               <div className="space-y-6">
@@ -112,7 +112,7 @@ export default function Contact() {
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="mt-1 w-2 h-2 rounded-full bg-blue-500" />
+                  <div className="mt-1 w-2 h-2 rounded-full bg-[#e8b72e]" />
                   <div>
                     <p className="text-sm font-bold text-white/90">Location</p>
                     <p className="text-xs text-white/40">Bengaluru, India (Available for Remote)</p>
