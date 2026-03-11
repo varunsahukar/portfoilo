@@ -6,8 +6,8 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'About', href: '#about' },
-    { name: 'Work', href: '#projects' },
     { name: 'Skills', href: '#skills' },
+    { name: 'Work', href: '#projects' },
     { name: 'Contact', href: '#contact' },
   ]
   const left = navLinks.slice(0, 2)
