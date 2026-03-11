@@ -12,7 +12,11 @@ export default function Home() {
   const [index, setIndex] = useState(0);
   const containerRef = useRef(null);
   const [stickerOpen, setStickerOpen] = useState(false);
-  const handleStickerClick = useCallback(() => setStickerOpen(true), []);
+  const [showHint, setShowHint] = useState(true);
+  const handleStickerClick = useCallback(() => {
+    setStickerOpen(true);
+    setShowHint(false);
+  }, []);
   const handleStickerClose = useCallback(() => setStickerOpen(false), []);
   
   const { scrollYProgress } = useScroll({
@@ -40,11 +44,24 @@ export default function Home() {
       className="relative pt-32 pb-20 px-4 max-w-6xl mx-auto min-h-screen flex items-center"
     >
       <motion.div 
-        className="absolute right-2 bottom-16 md:right-6 md:bottom-24 z-20 -rotate-[2deg] cursor-pointer"
+        className="absolute right-2 bottom-16 md:right-6 md:bottom-24 z-20 -rotate-[2deg] cursor-pointer relative"
         animate={{ y: [-6, 0, -6], rotate: [-2, -1.2, -2] }}
         transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
         onClick={handleStickerClick}
       >
+        {showHint && (
+          <motion.div
+            className="pointer-events-none absolute -top-3 right-3 md:-top-4 md:right-4 z-30"
+            animate={{ scale: [1, 1.1, 1], opacity: [0.7, 1, 0.7] }}
+            transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            <div className="relative">
+              <div className="w-10 h-10 rounded-full bg-white/15 backdrop-blur-md border border-white/25" />
+              <div className="absolute inset-0 rounded-full ring-2 ring-white/40" />
+              <div className="absolute -top-2 -left-1 text-white text-xl">🖱️</div>
+            </div>
+          </motion.div>
+        )}
         <img
           src={stickerImg}
           alt="Sticker"
