@@ -39,7 +39,8 @@ export const ScrollVelocity = ({
   parallaxClassName = 'parallax', 
   scrollerClassName = 'scroller', 
   parallaxStyle, 
-  scrollerStyle 
+  scrollerStyle,
+  isDark
 }) => { 
   function VelocityText({ 
     children, 

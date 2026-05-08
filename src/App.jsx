@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
@@ -40,6 +40,7 @@ function SectionWrapper({ children }) {
 }
 
 function App() {
+  const [isDark, setIsDark] = useState(true)
   const { scrollY } = useScroll()
   const bgY = useTransform(scrollY, [0, 3000], [0, -200])
   const springBgY = useSpring(bgY, { stiffness: 50, damping: 20 })
@@ -91,15 +92,23 @@ function App() {
     return () => document.removeEventListener('click', handleClick)
   }, [])
 
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [isDark])
+
   return (
-    <div className="min-h-screen text-white relative overflow-x-hidden bg-black">
-      <div className="fixed inset-0 z-0 overflow-hidden bg-black">
-        <div className="absolute inset-0 background-grid opacity-15 [mask-image:radial-gradient(80%_80%_at_50%_50%,#000_60%,transparent_100%)]" />
+    <div className={`min-h-screen relative overflow-x-hidden ${isDark ? 'bg-black text-white' : 'bg-[#f5f5f0] text-black'}`}>
+      <div className={`fixed inset-0 z-0 overflow-hidden ${isDark ? 'bg-black' : 'bg-[#f5f5f0]'}`}>
+        <div className={`absolute inset-0 background-grid opacity-15 ${isDark ? '[mask-image:radial-gradient(80%_80%_at_50%_50%,#000_60%,transparent_100%)]' : '[mask-image:radial-gradient(80%_80%_at_50%_50%,#000_60%,transparent_100%)]'}`} />
         
         <div className="absolute inset-0 opacity-25">
           <LightRays
             raysOrigin="top-center"
-            raysColor="#bcc1c6ff"
+            raysColor={isDark ? "#bcc1c6ff" : "#666666"}
             raysSpeed={1}
             lightSpread={0.7}
             rayLength={3}
@@ -113,32 +122,33 @@ function App() {
             saturation={1.2}
           />
         </div>
-        <div className="pointer-events-none absolute inset-0 vignette-mask opacity-80" />
+        <div className={`pointer-events-none absolute inset-0 vignette-mask opacity-80 ${!isDark ? 'opacity-40' : ''}`} />
       </div>
-      <Navbar />
+      <Navbar isDark={isDark} setIsDark={setIsDark} />
       <main className="relative z-10 space-y-12 py-12">
         <SectionWrapper>
-          <Home />
+          <Home isDark={isDark} />
         </SectionWrapper>
         
         <ScrollVelocity 
           texts={['WELCOME TO MY PORTFOLIO', 'WELCOME TO MY PORTFOLIO']} 
           velocity={100} 
           className="custom-scroll-text" 
+          isDark={isDark}
         />
         
         <SectionWrapper>
-          <About />
+          <About isDark={isDark} />
         </SectionWrapper>
         
-        <TechStack />
+        <TechStack isDark={isDark} />
         
         <SectionWrapper>
-          <Projects />
+          <Projects isDark={isDark} />
         </SectionWrapper>
         
         <SectionWrapper>
-          <Contact />
+          <Contact isDark={isDark} />
         </SectionWrapper>
       </main>
       <Footer />

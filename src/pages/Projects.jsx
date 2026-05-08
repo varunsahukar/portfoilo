@@ -4,12 +4,11 @@ import {
   SiReact, 
   SiFirebase, 
   SiVuedotjs, 
-  SiD3Dotjs, 
   SiPython,
   SiGithub 
 } from 'react-icons/si';
 
-export default function Projects() {
+export default function Projects({ isDark }) {
   const [selectedId, setSelectedId] = useState(null);
   const sectionRef = useRef(null);
   const [isHoveringSection, setIsHoveringSection] = useState(false);
@@ -54,7 +53,7 @@ export default function Projects() {
       id: 4,
       title: "Analytics Dashboard",
       description: "Real-time data visualization platform processing millions of data points for actionable business insights. Using D3.js and React.",
-      icon: SiD3Dotjs,
+      icon: SiReact,
       liveUrl: "#"
     },
     { 
@@ -98,9 +97,9 @@ export default function Projects() {
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
-            className="fixed top-0 left-0 w-12 h-12 bg-[rgba(232,183,46,0.2)] border border-[rgba(232,183,46,0.5)] rounded-full flex items-center justify-center pointer-events-none z-[60] backdrop-blur-[2px]"
+            className={`fixed top-0 left-0 w-12 h-12 rounded-full flex items-center justify-center pointer-events-none z-[60] backdrop-blur-[2px] ${isDark ? 'bg-[rgba(232,183,46,0.2)] border border-[rgba(232,183,46,0.5)]' : 'bg-[rgba(0,0,0,0.05)] border border-[rgba(0,0,0,0.2)]'}`}
           >
-            <span className="text-[8px] font-bold uppercase tracking-widest text-[#e8b72e]">Click</span>
+            <span className={`text-[8px] font-bold uppercase tracking-widest ${isDark ? 'text-[#e8b72e]' : 'text-black'}`}>Click</span>
           </motion.div>
         )}
       </AnimatePresence>
@@ -111,10 +110,10 @@ export default function Projects() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="text-5xl md:text-8xl font-black mb-12 text-center tracking-tighter uppercase bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">
+        <h2 className={`text-5xl md:text-8xl font-black mb-12 text-center tracking-tighter uppercase bg-gradient-to-b ${isDark ? 'from-white to-white/40' : 'from-black to-black/40'} bg-clip-text text-transparent`}>
           WORK SPACE
         </h2>
-        <p className="max-w-2xl mx-auto mb-10 text-center text-sm text-slate-400">
+        <p className={`max-w-2xl mx-auto mb-10 text-center text-sm ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
           Click on any card below to see more details.
         </p>
       </motion.div>
@@ -140,33 +139,33 @@ export default function Projects() {
             }}
             className="group relative w-full cursor-pointer font-mono"
           >
-            <div className="h-full rounded-xl border border-white/10 bg-black/80 shadow-2xl overflow-hidden transition-all duration-300 group-hover:border-[rgba(232,183,46,0.3)]">
+            <div className={`h-full rounded-xl border shadow-2xl overflow-hidden transition-all duration-300 ${isDark ? 'border-white/10 bg-black/80 group-hover:border-[rgba(232,183,46,0.3)]' : 'border-black/10 bg-white/80 group-hover:border-[rgba(0,0,0,0.3)]'}`}>
               {/* Terminal Title Bar */}
-              <div className="flex items-center justify-between px-4 py-2 bg-white/5 border-b border-white/5">
+              <div className={`flex items-center justify-between px-4 py-2 border-b ${isDark ? 'bg-white/5 border-white/5' : 'bg-black/5 border-black/5'}`}>
                 <div className="flex gap-1.5">
                   <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" />
                   <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
                   <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]" />
                 </div>
-                <div className="text-[10px] text-white/30 uppercase tracking-widest">zsh</div>
+                <div className={`text-[10px] uppercase tracking-widest ${isDark ? 'text-white/30' : 'text-black/30'}`}>zsh</div>
               </div>
 
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <motion.div 
                     layoutId={`icon-${project.id}`}
-                    className="text-[#e8b72e]"
+                    className={`${isDark ? 'text-[#e8b72e]' : 'text-black'}`}
                   >
                     {project.icon && <project.icon className="text-xl" />}
                   </motion.div>
-                  <motion.h3 layoutId={`title-${project.id}`} className="text-base font-bold text-white/90 uppercase tracking-tight">
+                  <motion.h3 layoutId={`title-${project.id}`} className={`text-base font-bold uppercase tracking-tight ${isDark ? 'text-white/90' : 'text-black/90'}`}>
                     {project.title}
                   </motion.h3>
                 </div>
                 
                 <div className="flex gap-2 text-sm">
-                  <span className="text-[#e8b72e] font-bold">$</span>
-                  <motion.p layoutId={`desc-${project.id}`} className="text-white/60 leading-relaxed line-clamp-3">
+                  <span className={`font-bold ${isDark ? 'text-[#e8b72e]' : 'text-black'}`}>$</span>
+                  <motion.p layoutId={`desc-${project.id}`} className={`leading-relaxed line-clamp-3 ${isDark ? 'text-white/60' : 'text-black/60'}`}>
                     {project.description}
                   </motion.p>
                 </div>
@@ -185,26 +184,26 @@ export default function Projects() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedId(null)}
-              className="fixed inset-0 bg-black/40 backdrop-blur-xl z-[100] cursor-zoom-out"
+              className={`fixed inset-0 backdrop-blur-xl z-[100] cursor-zoom-out ${isDark ? 'bg-black/40' : 'bg-black/20'}`}
             />
             
             {/* Expanded Card */}
             <div className="fixed inset-0 flex items-center justify-center z-[101] pointer-events-none p-4 font-mono">
               <motion.div
                 layoutId={`card-${selectedId}`}
-                className="bg-black/90 border border-white/20 rounded-xl shadow-2xl pointer-events-auto relative overflow-hidden max-w-2xl w-full"
+                className={`rounded-xl shadow-2xl pointer-events-auto relative overflow-hidden max-w-2xl w-full ${isDark ? 'bg-black/90 border border-white/20' : 'bg-white/90 border border-black/20'}`}
               >
                 {/* Terminal Title Bar */}
-                <div className="flex items-center justify-between px-6 py-3 bg-white/10 border-b border-white/10">
+                <div className={`flex items-center justify-between px-6 py-3 border-b ${isDark ? 'bg-white/10 border-white/10' : 'bg-black/10 border-black/10'}`}>
                   <div className="flex gap-2">
                     <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
                     <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
                     <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
                   </div>
-                  <div className="text-xs text-white/40 uppercase tracking-widest">project_details.sh</div>
+                  <div className={`text-xs uppercase tracking-widest ${isDark ? 'text-white/40' : 'text-black/40'}`}>project_details.sh</div>
                   <button 
                     onClick={() => setSelectedId(null)}
-                    className="p-1 rounded-md hover:bg-white/10 text-white/40 hover:text-white transition-colors"
+                    className={`p-1 rounded-md transition-colors ${isDark ? 'hover:bg-white/10 text-white/40 hover:text-white' : 'hover:bg-black/10 text-black/40 hover:text-black'}`}
                   >
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                   </button>
@@ -215,23 +214,23 @@ export default function Projects() {
                     <div className="flex items-center gap-6">
                       <motion.div 
                         layoutId={`icon-${selectedId}`}
-                    className="text-[#e8b72e]"
+                    className={`${isDark ? 'text-[#e8b72e]' : 'text-black'}`}
                       >
                         {selectedProject.icon && <selectedProject.icon className="text-5xl" />}
                       </motion.div>
                       <motion.h3 
                         layoutId={`title-${selectedId}`}
-                        className="text-3xl md:text-4xl font-extrabold tracking-tight text-white uppercase"
+                        className={`text-3xl md:text-4xl font-extrabold tracking-tight uppercase ${isDark ? 'text-white' : 'text-black'}`}
                       >
                         {selectedProject.title}
                       </motion.h3>
                     </div>
 
                     <div className="flex gap-4">
-                      <span className="text-[#e8b72e] font-bold text-xl">$</span>
+                      <span className={`font-bold text-xl ${isDark ? 'text-[#e8b72e]' : 'text-black'}`}>$</span>
                       <motion.p 
                         layoutId={`desc-${selectedId}`}
-                        className="text-lg text-white/80 leading-relaxed"
+                        className={`text-lg leading-relaxed ${isDark ? 'text-white/80' : 'text-black/80'}`}
                       >
                         {selectedProject.description}
                       </motion.p>
@@ -241,7 +240,7 @@ export default function Projects() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2 }}
-                      className="flex flex-wrap gap-4 pt-6 border-t border-white/5"
+                      className={`flex flex-wrap gap-4 pt-6 border-t ${isDark ? 'border-white/5' : 'border-black/5'}`}
                     >
                       <a 
                         href={selectedProject.liveUrl}
@@ -257,13 +256,13 @@ export default function Projects() {
                           href={selectedProject.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-white/5 hover:bg-white/10 text-white/70 font-bold transition-all border border-white/10"
+                          className={`inline-flex items-center gap-2 px-8 py-3 rounded-lg font-bold transition-all border ${isDark ? 'bg-white/5 hover:bg-white/10 text-white/70 border-white/10' : 'bg-black/5 hover:bg-black/10 text-black/70 border-black/10'}`}
                         >
                           git_clone
                           <SiGithub className="text-lg" />
                         </a>
                       ) : (
-                        <button className="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-white/5 hover:bg-white/10 text-white/70 font-bold transition-all border border-white/10">
+                        <button className={`inline-flex items-center gap-2 px-8 py-3 rounded-lg font-bold transition-all border ${isDark ? 'bg-white/5 hover:bg-white/10 text-white/70 border-white/10' : 'bg-black/5 hover:bg-black/10 text-black/70 border-black/10'}`}>
                           git_clone
                           <SiGithub className="text-lg" />
                         </button>
