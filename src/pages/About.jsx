@@ -38,7 +38,7 @@ const TextType = ({ text, delay = 0, speed = 30, className = "" }) => {
 
 export default function About({ isDark }) {
   const aboutHeading = "About Me";
-  const firstSentence = "I build things that work and work well.";
+  const firstSentence = "I build things that work — and work well.";
   
   return (
     <section
@@ -93,7 +93,7 @@ export default function About({ isDark }) {
 
           {/* Paragraph with Remaining Copy and Wavy Underlines */}
           <div className={`text-lg md:text-xl leading-relaxed font-medium mb-12 ${isDark ? 'text-white/70' : 'text-gray-700'}`}>
-            <p>
+            <p className="mb-6">
               As a full-stack developer, I take ownership of the{" "}
               <span className="relative inline-block">
                 entire product lifecycle
@@ -127,6 +127,25 @@ export default function About({ isDark }) {
                 />
               </span>
               .
+            </p>
+            <p>
+              I am particularly{" "}
+              <span className="relative inline-block">
+                good at building scalable system architectures
+                <motion.span 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 1.8 }}
+                  className="absolute left-0 bottom-[-4px] w-full h-[10px] pointer-events-none"
+                  style={{ 
+                    textDecoration: 'underline wavy #D4A017', 
+                    textDecorationSkipInk: 'none',
+                    display: 'block'
+                  }}
+                />
+              </span>{" "}
+              that handle growth without compromise. My focus is on creating high-performance, resilient systems that bridge the gap between technical complexity and seamless user experience.
             </p>
           </div>
 
