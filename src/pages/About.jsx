@@ -43,39 +43,35 @@ export default function About({ isDark }) {
   return (
     <section
       id="about"
-      className={`relative py-32 px-4 max-w-7xl mx-auto min-h-screen flex items-center justify-center transition-colors duration-500`}
+      className={`relative py-32 px-4 max-w-7xl mx-auto min-h-screen flex flex-col items-center transition-colors duration-500`}
     >
-      <div className="relative z-10 flex flex-col items-center text-center w-full max-w-4xl">
-        {/* Section Heading - Centered */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-12"
-        >
-          <h2 className={`text-5xl md:text-8xl font-black tracking-tighter uppercase bg-gradient-to-b ${isDark ? 'from-white to-white/40' : 'from-black to-black/40'} bg-clip-text text-transparent`}>
-            <TextType text={aboutHeading} speed={50} />
-          </h2>
-        </motion.div>
+      {/* Top Middle Section: Heading */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="w-full text-center mb-24"
+      >
+        <h2 className={`text-5xl md:text-8xl font-black tracking-tighter uppercase bg-gradient-to-b ${isDark ? 'from-white to-white/40' : 'from-black to-black/40'} bg-clip-text text-transparent`}>
+          <TextType text={aboutHeading} speed={50} />
+        </h2>
+      </motion.div>
 
-        {/* Profile Image - Centered */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="relative mb-16 w-full max-w-[400px] aspect-[4/5] mx-auto"
-        >
-          <img
-            src={userPhoto}
-            alt="Varun Sahukar Portrait"
-            className="w-full h-full object-cover rounded-[2rem] shadow-sm grayscale hover:grayscale-0 transition-all duration-700"
-          />
-        </motion.div>
+      <div className="relative z-10 grid lg:grid-cols-[0.4fr_0.6fr] gap-16 lg:gap-24 items-center w-full">
+        {/* LEFT COLUMN (40%): Photo */}
+        <div className="relative flex justify-center lg:justify-start">
+          <div className="relative w-full max-w-[400px] aspect-[4/5]">
+            <img
+              src={userPhoto}
+              alt="Varun Sahukar Portrait"
+              className="w-full h-full object-cover rounded-[2rem] shadow-sm grayscale hover:grayscale-0 transition-all duration-700"
+            />
+          </div>
+        </div>
 
-        {/* Content - Centered */}
-        <div className="flex flex-col items-center">
+        {/* RIGHT COLUMN (60%): Text Content */}
+        <div className="relative flex flex-col items-start text-left">
           {/* First Sentence with TextType and Wavy Underline */}
           <div className={`text-2xl md:text-4xl lg:text-5xl font-black tracking-tight leading-tight mb-8 ${isDark ? 'text-white' : 'text-black'}`}>
             <div className="relative inline-block">
@@ -90,7 +86,7 @@ export default function About({ isDark }) {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 2.2 }}
-                className="absolute left-0 bottom-[4px] w-full h-[10px] pointer-events-none"
+                className="absolute left-0 bottom-[4px] w-[60%] h-[10px] pointer-events-none"
                 style={{ 
                   textDecoration: 'underline wavy #D4A017', 
                   textDecorationSkipInk: 'none',
@@ -159,8 +155,8 @@ export default function About({ isDark }) {
             </p>
           </div>
 
-          {/* SOCIAL ICONS - Centered */}
-          <div className="flex flex-wrap justify-center gap-4 mt-2">
+          {/* SOCIAL ICONS (Preserved exactly as-is) */}
+          <div className="flex flex-wrap gap-4 mt-2">
             <a
               href="https://github.com/varunsahukar"
               target="_blank"
