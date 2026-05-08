@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://varunsahukar.com/sitemap.xml
+Sitemap: https://varunsahukar9798-portfoilo.vercel.app/sitemap.xml

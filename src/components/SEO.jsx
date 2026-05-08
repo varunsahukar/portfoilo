@@ -12,7 +12,7 @@ const SEO = ({
   const siteName = 'Varun Sahukar | Portfolio';
   const fullTitle = title ? `${title} | ${siteName}` : siteName;
   const defaultDescription = 'Professional Portfolio of Varun Sahukar - Full Stack Developer specializing in React, Next.js, FastAPI, and scalable system architectures.';
-  const siteUrl = 'https://varunsahukar.com'; // Replace with actual domain when ready
+  const siteUrl = 'https://varunsahukar9798-portfoilo.vercel.app'; // Replace with actual domain when ready
   
   return (
     <Helmet>
