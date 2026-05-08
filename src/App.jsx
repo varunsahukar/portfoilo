@@ -1,13 +1,16 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, lazy, Suspense } from 'react'
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
+import SEO from './components/SEO'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
-import Home from './pages/Home'
-import About from './pages/About'
-import Projects from './pages/Projects'
 import ScrollVelocity from './pages/ScrollVelocity'
-import TechStack from './pages/TechStack'
-import Contact from './pages/Contact'
+
+// Lazy load sections for better performance
+const Home = lazy(() => import('./pages/Home'))
+const About = lazy(() => import('./pages/About'))
+const Projects = lazy(() => import('./pages/Projects'))
+const TechStack = lazy(() => import('./pages/TechStack'))
+const Contact = lazy(() => import('./pages/Contact'))
 import LightRays from './components/ui/LightRays'
 
 function SectionWrapper({ children }) {
@@ -101,8 +104,9 @@ function App() {
   }, [isDark])
 
   return (
-    <div className={`min-h-screen relative overflow-x-hidden ${isDark ? 'bg-black text-white' : 'bg-[#f5f5f0] text-black'}`}>
-      <div className={`fixed inset-0 z-0 overflow-hidden ${isDark ? 'bg-black' : 'bg-[#f5f5f0]'}`}>
+    <div className={`min-h-screen relative overflow-x-hidden ${isDark ? 'bg-black text-white' : 'bg-[#F5F0E8] text-black'}`}>
+      <SEO />
+      <div className={`fixed inset-0 z-0 overflow-hidden ${isDark ? 'bg-black' : 'bg-[#F5F0E8]'}`}>
         <div className={`absolute inset-0 background-grid opacity-15 ${isDark ? '[mask-image:radial-gradient(80%_80%_at_50%_50%,#000_60%,transparent_100%)]' : '[mask-image:radial-gradient(80%_80%_at_50%_50%,#000_60%,transparent_100%)]'}`} />
         
         <div className="absolute inset-0 opacity-25">
@@ -126,30 +130,32 @@ function App() {
       </div>
       <Navbar isDark={isDark} setIsDark={setIsDark} />
       <main className="relative z-10 space-y-12 py-12">
-        <SectionWrapper>
-          <Home isDark={isDark} />
-        </SectionWrapper>
-        
-        <ScrollVelocity 
-          texts={['WELCOME TO MY PORTFOLIO', 'WELCOME TO MY PORTFOLIO']} 
-          velocity={100} 
-          className="custom-scroll-text" 
-          isDark={isDark}
-        />
-        
-        <SectionWrapper>
-          <About isDark={isDark} />
-        </SectionWrapper>
-        
-        <TechStack isDark={isDark} />
-        
-        <SectionWrapper>
-          <Projects isDark={isDark} />
-        </SectionWrapper>
-        
-        <SectionWrapper>
-          <Contact isDark={isDark} />
-        </SectionWrapper>
+        <Suspense fallback={<div className="h-screen flex items-center justify-center"><div className="w-10 h-10 border-4 border-[#D4A017] border-t-transparent rounded-full animate-spin" /></div>}>
+          <SectionWrapper>
+            <Home isDark={isDark} />
+          </SectionWrapper>
+          
+          <ScrollVelocity 
+            texts={['WELCOME TO MY PORTFOLIO', 'WELCOME TO MY PORTFOLIO']} 
+            velocity={100} 
+            className="custom-scroll-text" 
+            isDark={isDark}
+          />
+          
+          <SectionWrapper>
+            <About isDark={isDark} />
+          </SectionWrapper>
+          
+          <TechStack isDark={isDark} />
+          
+          <SectionWrapper>
+            <Projects isDark={isDark} />
+          </SectionWrapper>
+          
+          <SectionWrapper>
+            <Contact isDark={isDark} />
+          </SectionWrapper>
+        </Suspense>
       </main>
       <Footer />
     </div>
