@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import userPhoto from '../assets/images/me.png';
+import userPhoto from '../assets/images/varunnp.png';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
 // Custom TextType component to reveal text character by character
@@ -38,7 +38,7 @@ const TextType = ({ text, delay = 0, speed = 30, className = "" }) => {
 
 export default function About({ isDark }) {
   const aboutHeading = "About Me";
-  const firstSentence = "I build things that work — and work well.";
+  const firstSentence = "I build things that work and work well.";
   
   return (
     <section

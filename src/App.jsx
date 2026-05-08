@@ -101,8 +101,8 @@ function App() {
   }, [isDark])
 
   return (
-    <div className={`min-h-screen relative overflow-x-hidden ${isDark ? 'bg-black text-white' : 'bg-[#F5F0E8] text-black'}`}>
-      <div className={`fixed inset-0 z-0 overflow-hidden ${isDark ? 'bg-black' : 'bg-[#F5F0E8]'}`}>
+    <div className={`min-h-screen relative overflow-x-hidden ${isDark ? 'bg-black text-white' : 'bg-[#f5f5f0] text-black'}`}>
+      <div className={`fixed inset-0 z-0 overflow-hidden ${isDark ? 'bg-black' : 'bg-[#f5f5f0]'}`}>
         <div className={`absolute inset-0 background-grid opacity-15 ${isDark ? '[mask-image:radial-gradient(80%_80%_at_50%_50%,#000_60%,transparent_100%)]' : '[mask-image:radial-gradient(80%_80%_at_50%_50%,#000_60%,transparent_100%)]'}`} />
         
         <div className="absolute inset-0 opacity-25">
