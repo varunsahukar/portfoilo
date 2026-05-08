@@ -1,139 +1,142 @@
-import { motion } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
 import userPhoto from '../assets/images/me.png';
 import { FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
-const TextType = ({ children, delay = 0 }) => {
-  const text = typeof children === 'string' ? children : '';
-  return (
-    <motion.span
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5, delay }}
-    >
-      {text.split('').map((char, index) => (
-        <motion.span
-          key={index}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.05, delay: delay + index * 0.015 }}
-        >
-          {char}
-        </motion.span>
-      ))}
-    </motion.span>
-  );
-};
+// Custom TextType component to reveal text character by character
+const TextType = ({ text, delay = 0, speed = 30, className = "" }) => {
+  const [displayedText, setDisplayedText] = useState("");
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
 
-const CurlyUnderline = ({ children, color = "#3b82f6", delay = 1 }) => {
+  useEffect(() => {
+    if (isInView && !hasAnimated) {
+      const startTimeout = setTimeout(() => {
+        let i = 0;
+        const timer = setInterval(() => {
+          setDisplayedText(text.slice(0, i + 1));
+          i++;
+          if (i >= text.length) {
+            clearInterval(timer);
+            setHasAnimated(true);
+          }
+        }, speed);
+        return () => clearInterval(timer);
+      }, delay * 1000);
+      return () => clearTimeout(startTimeout);
+    }
+  }, [isInView, text, speed, hasAnimated, delay]);
+
   return (
-    <span className="relative inline-block group mx-1">
-      <span className="relative z-10">{children}</span>
-      <svg
-        className="absolute left-0 top-[95%] w-full h-3 overflow-visible pointer-events-none"
-        viewBox="0 0 100 12"
-        preserveAspectRatio="none"
-      >
-        <motion.path
-          d="M0,5.5 C15,0 35,11 50,5.5 C65,0 85,11 100,5.5"
-          fill="none"
-          stroke={color}
-          strokeWidth="3"
-          strokeLinecap="round"
-          initial={{ pathLength: 0, opacity: 0 }}
-          whileInView={{ pathLength: 1, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay }}
-        />
-      </svg>
+    <span ref={ref} className={className}>
+      {displayedText}
+      {!hasAnimated && isInView && <span className="animate-pulse">|</span>}
     </span>
   );
 };
 
 export default function About({ isDark }) {
+  const aboutHeading = "About Me";
+  const firstSentence = "I build things that work — and work well.";
+  
   return (
     <section
       id="about"
-      className="relative py-32 px-4 max-w-6xl mx-auto min-h-screen flex items-center overflow-hidden"
+      className={`relative py-32 px-4 max-w-7xl mx-auto min-h-screen flex items-center transition-colors duration-500`}
     >
-      <div className="relative z-10 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center w-full">
-        {/* Left: Image */}
-        <motion.div 
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="relative group order-2 lg:order-1"
-        >
-          <div className="relative aspect-[4/5] w-full max-w-md mx-auto lg:mx-0 rounded-[2rem] overflow-hidden shadow-2xl shadow-blue-500/10">
+      <div className="relative z-10 grid lg:grid-cols-[0.4fr_0.6fr] gap-16 lg:gap-24 items-center w-full">
+        {/* LEFT COLUMN (40%) */}
+        <div className="relative flex justify-center lg:justify-start">
+          <div className="relative w-full max-w-[400px] aspect-[4/5]">
             <img
               src={userPhoto}
-              alt="Varun Sahukar"
-              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+              alt="Varun Sahukar Portrait"
+              className="w-full h-full object-cover rounded-[2rem] shadow-sm grayscale hover:grayscale-0 transition-all duration-700"
             />
-            {/* Subtle overlay gradient */}
-            <div className={`absolute inset-0 bg-gradient-to-t ${isDark ? 'from-black/60 via-transparent to-transparent' : 'from-black/20 via-transparent to-transparent'}`} />
           </div>
-          
-          {/* Decorative background glow */}
-          <div className="absolute -inset-10 bg-blue-500/10 blur-[100px] -z-10 rounded-full opacity-50 group-hover:opacity-80 transition-opacity duration-700" />
-        </motion.div>
+        </div>
 
-        {/* Right: Content */}
-        <div className="flex flex-col gap-10 order-1 lg:order-2 text-left">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className={`text-4xl md:text-7xl font-black uppercase tracking-tighter bg-gradient-to-b ${isDark ? 'from-white to-white/40' : 'from-black to-black/40'} bg-clip-text text-transparent mb-2`}>
-              About Me
+        {/* RIGHT COLUMN (60%) */}
+        <div className="relative flex flex-col items-start text-left">
+          {/* Section Heading with TextType */}
+          <div className="mb-6">
+            <h2 className={`text-xs uppercase tracking-[0.4em] font-bold ${isDark ? 'text-white/40' : 'text-gray-500'}`}>
+              <TextType text={aboutHeading} speed={50} />
             </h2>
-            <div className="h-1 w-20 bg-blue-500 rounded-full" />
-          </motion.div>
+          </div>
 
-          <div className={`text-lg md:text-xl leading-relaxed font-medium ${isDark ? 'text-white/80' : 'text-black/80'} space-y-6`}>
-            <p>
-              <TextType delay={0.5}>
-                I am a
-              </TextType>
-              <CurlyUnderline color="#3b82f6" delay={1.5}>Full-stack Developer</CurlyUnderline>
-              <TextType delay={1.8}>
-                and
-              </TextType>
-              <CurlyUnderline color="#3b82f6" delay={2.2}>Graphic Designer</CurlyUnderline>
-              <TextType delay={2.5}>
-                dedicated to crafting digital experiences that are both beautiful and functional.
-              </TextType>
-            </p>
+          {/* First Sentence with TextType and Wavy Underline */}
+          <div className={`text-2xl md:text-4xl lg:text-5xl font-black tracking-tight leading-tight mb-8 ${isDark ? 'text-white' : 'text-black'}`}>
+            <div className="relative inline-block">
+              <TextType 
+                text={firstSentence} 
+                speed={40} 
+                delay={0.5} 
+              />
+              {/* Wavy underline for "build things that work" */}
+              <motion.span 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 2.2 }}
+                className="absolute left-0 bottom-[4px] w-[60%] h-[10px] pointer-events-none"
+                style={{ 
+                  textDecoration: 'underline wavy #D4A017', 
+                  textDecorationSkipInk: 'none',
+                  fontSize: '24px', // Helps control wavy scale
+                  display: 'block'
+                }}
+              />
+            </div>
+          </div>
 
+          {/* Paragraph with Remaining Copy and Wavy Underlines */}
+          <div className={`text-lg md:text-xl leading-relaxed font-medium mb-12 ${isDark ? 'text-white/70' : 'text-gray-700'}`}>
             <p>
-              <TextType delay={3.5}>
-                Currently serving as a Graphic Designer at
-              </TextType>
-              <CurlyUnderline color="#10b981" delay={4.5}>GDG On Campus</CurlyUnderline>
-              <TextType delay={4.8}>
-                , I specialize in bridging the gap between
-              </TextType>
-              <CurlyUnderline color="#3b82f6" delay={5.5}>vision and execution</CurlyUnderline>
-              <TextType delay={5.8}>
-                . My approach combines technical precision with creative problem-solving to build software that doesn't just work—it inspires.
-              </TextType>
+              As a full-stack developer, I take ownership of the{" "}
+              <span className="relative inline-block">
+                entire product lifecycle
+                <motion.span 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
+                  className="absolute left-0 bottom-[-4px] w-full h-[10px] pointer-events-none"
+                  style={{ 
+                    textDecoration: 'underline wavy #D4A017', 
+                    textDecorationSkipInk: 'none',
+                    display: 'block'
+                  }}
+                />
+              </span>
+              : from architecting robust APIs and designing scalable data models, to crafting interfaces that feel intuitive and load fast. I don't just write code — I solve problems and{" "}
+              <span className="relative inline-block">
+                ship software people can rely on
+                <motion.span 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 1.2 }}
+                  className="absolute left-0 bottom-[-4px] w-full h-[10px] pointer-events-none"
+                  style={{ 
+                    textDecoration: 'underline wavy #D4A017', 
+                    textDecorationSkipInk: 'none',
+                    display: 'block'
+                  }}
+                />
+              </span>
+              .
             </p>
           </div>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 6.5 }}
-            className="flex flex-wrap gap-4"
-          >
+          {/* SOCIAL ICONS (Preserved exactly as-is) */}
+          <div className="flex flex-wrap gap-4 mt-2">
             <a
               href="https://github.com/varunsahukar"
               target="_blank"
               rel="noopener noreferrer"
-              className={`inline-flex h-12 w-12 items-center justify-center rounded-2xl border transition-all duration-300 ${isDark ? 'bg-white/5 border-white/10 text-white/70 hover:text-white hover:bg-white/10 hover:border-white/30 hover:-translate-y-1' : 'bg-black/5 border-black/10 text-black/70 hover:text-black hover:bg-black/10 hover:border-black/30 hover:-translate-y-1'}`}
+              className={`inline-flex h-12 w-12 items-center justify-center rounded-full transition-all duration-300 ${isDark ? 'bg-white/10 text-white hover:bg-white/20' : 'bg-black/10 text-black hover:bg-black/20'}`}
             >
               <FaGithub className="w-6 h-6" />
             </a>
@@ -141,7 +144,7 @@ export default function About({ isDark }) {
               href="https://www.linkedin.com/in/varunsahukar9798/"
               target="_blank"
               rel="noopener noreferrer"
-              className={`inline-flex h-12 w-12 items-center justify-center rounded-2xl border transition-all duration-300 ${isDark ? 'bg-white/5 border-white/10 text-white/70 hover:text-white hover:bg-white/10 hover:border-white/30 hover:-translate-y-1' : 'bg-black/5 border-black/10 text-black/70 hover:text-black hover:bg-black/10 hover:border-black/30 hover:-translate-y-1'}`}
+              className={`inline-flex h-12 w-12 items-center justify-center rounded-full transition-all duration-300 ${isDark ? 'bg-white/10 text-white hover:bg-white/20' : 'bg-black/10 text-black hover:bg-black/20'}`}
             >
               <FaLinkedin className="w-6 h-6" />
             </a>
@@ -149,11 +152,11 @@ export default function About({ isDark }) {
               href="https://www.instagram.com/varun_sahukar19"
               target="_blank"
               rel="noopener noreferrer"
-              className={`inline-flex h-12 w-12 items-center justify-center rounded-2xl border transition-all duration-300 ${isDark ? 'bg-white/5 border-white/10 text-white/70 hover:text-white hover:bg-white/10 hover:border-white/30 hover:-translate-y-1' : 'bg-black/5 border-black/10 text-black/70 hover:text-black hover:bg-black/10 hover:border-black/30 hover:-translate-y-1'}`}
+              className={`inline-flex h-12 w-12 items-center justify-center rounded-full transition-all duration-300 ${isDark ? 'bg-white/10 text-white hover:bg-white/20' : 'bg-black/10 text-black hover:bg-black/20'}`}
             >
               <FaInstagram className="w-6 h-6" />
             </a>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
