@@ -61,7 +61,7 @@ export default function About({ isDark }) {
         <div className="relative flex flex-col items-start text-left">
           {/* Section Heading with TextType */}
           <div className="mb-6">
-            <h2 className={`text-xs uppercase tracking-[0.4em] font-bold ${isDark ? 'text-white/40' : 'text-gray-500'}`}>
+            <h2 className={`text-5xl md:text-8xl font-black mb-6 tracking-tighter uppercase bg-gradient-to-b ${isDark ? 'from-white to-white/40' : 'from-black to-black/40'} bg-clip-text text-transparent`}>
               <TextType text={aboutHeading} speed={50} />
             </h2>
           </div>
