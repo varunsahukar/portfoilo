@@ -54,7 +54,8 @@ export default function Projects({ isDark }) {
       title: "Lumina",
       description: "A sleek, modern AI-powered productivity application with real-time collaboration, smart task management, and an intuitive user interface.",
       icon: SiReact,
-      githubUrl: "https://github.com/varunsahukar/Lumina.git"
+      githubUrl: "https://github.com/varunsahukar/Lumina.git",
+      liveUrl: "https://lumina-puce-pi.vercel.app/"
     },
     {
       id: 5,
