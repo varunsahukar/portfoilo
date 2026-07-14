@@ -27,13 +27,21 @@ export default function Projects({ isDark }) {
   const projects = [
     {
       id: 1,
+      title: "Solo Bot",
+      description: "AI-powered study app: chat with documents, generate quizzes, explain code, summarize videos. Powered by Groq, Supabase, and FastAPI.",
+      icon: SiReact,
+      githubUrl: "https://github.com/varunsahukar/Solo-Bot.git",
+      liveUrl: "https://solobot.netlify.app"
+    },
+    {
+      id: 2,
       title: "Lumina",
       description: "A sleek, modern AI-powered productivity application with real-time collaboration, smart task management, and an intuitive user interface.",
       icon: SiReact,
       githubUrl: "https://github.com/varunsahukar/Lumina.git"
     },
     {
-      id: 2,
+      id: 3,
       title: "Helix (Team Ocular)",
       description: "Collaborative team platform with advanced visualization, real-time data synchronization, and scalable system architecture.",
       icon: SiTypescript,
@@ -87,7 +95,7 @@ export default function Projects({ isDark }) {
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 justify-items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
         {projects.map((project) => (
           <motion.div
             key={project.id}
@@ -211,6 +219,17 @@ export default function Projects({ isDark }) {
                       transition={{ delay: 0.2 }}
                       className={`flex flex-wrap gap-4 pt-6 border-t ${isDark ? 'border-white/5' : 'border-black/5'}`}
                     >
+                      {selectedProject.liveUrl && (
+                        <a 
+                          href={selectedProject.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-[#e8b72e] hover:bg-[#f0c955] text-black font-bold transition-all shadow-[0_0_15px_rgba(232,183,46,0.2)]"
+                        >
+                          ./run_demo.sh
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                        </a>
+                      )}
                       {selectedProject.githubUrl ? (
                         <a 
                           href={selectedProject.githubUrl}
