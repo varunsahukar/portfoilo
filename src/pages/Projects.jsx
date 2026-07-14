@@ -2,9 +2,7 @@ import { useState, useRef } from 'react';
 import { motion, AnimatePresence, useSpring, useMotionValue } from 'framer-motion';
 import { 
   SiReact, 
-  SiFirebase, 
-  SiVuedotjs, 
-  SiPython,
+  SiTypescript, 
   SiGithub 
 } from 'react-icons/si';
 
@@ -29,46 +27,17 @@ export default function Projects({ isDark }) {
   const projects = [
     {
       id: 1,
-      title: "Solo Tutor",
-      description: "AI-powered study app: chat with documents, generate quizzes, explain code, summarize videos. Powered by Groq, Supabase, and FastAPI.",
+      title: "Lumina",
+      description: "A sleek, modern AI-powered productivity application with real-time collaboration, smart task management, and an intuitive user interface.",
       icon: SiReact,
-      liveUrl: "https://solobot.netlify.app",
-      githubUrl: "https://github.com/varunsahukar/Solo-Bot.git"
+      githubUrl: "https://github.com/varunsahukar/Lumina.git"
     },
     {
       id: 2,
-      title: "E-commerce Platform",
-      description: "A full-scale online store with secure payments, real-time inventory tracking, and an intuitive admin dashboard. Built with React and Node.js.",
-      icon: SiReact,
-      liveUrl: "#"
-    },
-    {
-      id: 3,
-      title: "Task Management App",
-      description: "Collaborative tool for teams to manage projects, track time, and automate workflows with ease. High performance and real-time updates.",
-      icon: SiVuedotjs,
-      liveUrl: "#"
-    },
-    {
-      id: 4,
-      title: "Analytics Dashboard",
-      description: "Real-time data visualization platform processing millions of data points for actionable business insights. Using D3.js and React.",
-      icon: SiReact,
-      liveUrl: "#"
-    },
-    { 
-      id: 5,
-      title: "Serverless Chat App", 
-      description: "Realtime messaging using Firebase/Socket.io with auth and presence. Seamlessly scales to thousands of concurrent users.", 
-      icon: SiFirebase, 
-      liveUrl: "#" 
-    },
-    { 
-      id: 6,
-      title: "Weather Tracker", 
-      description: "Global weather forecasting using OpenWeatherMap API and Leaflet maps. Real-time alerts and interactive weather maps.", 
-      icon: SiPython, 
-      liveUrl: "#" 
+      title: "Helix (Team Ocular)",
+      description: "Collaborative team platform with advanced visualization, real-time data synchronization, and scalable system architecture.",
+      icon: SiTypescript,
+      githubUrl: "https://github.com/varunsahukar/team-ocular.git"
     }
   ];
 
@@ -118,7 +87,7 @@ export default function Projects({ isDark }) {
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 justify-items-center">
         {projects.map((project) => (
           <motion.div
             key={project.id}
@@ -242,15 +211,6 @@ export default function Projects({ isDark }) {
                       transition={{ delay: 0.2 }}
                       className={`flex flex-wrap gap-4 pt-6 border-t ${isDark ? 'border-white/5' : 'border-black/5'}`}
                     >
-                      <a 
-                        href={selectedProject.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-8 py-3 rounded-lg bg-[#e8b72e] hover:bg-[#f0c955] text-black font-bold transition-all shadow-[0_0_15px_rgba(232,183,46,0.2)]"
-                      >
-                        ./run_demo.sh
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                      </a>
                       {selectedProject.githubUrl ? (
                         <a 
                           href={selectedProject.githubUrl}
