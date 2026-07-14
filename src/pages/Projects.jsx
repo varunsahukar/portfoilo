@@ -43,13 +43,21 @@ export default function Projects({ isDark }) {
     },
     {
       id: 3,
+      title: "Finca",
+      description: "Modern finance application for tracking expenses, managing budgets, and visualizing financial data with beautiful charts.",
+      icon: SiReact,
+      githubUrl: "https://github.com/narensen/Finca.git",
+      liveUrl: "https://finca-opal.vercel.app/"
+    },
+    {
+      id: 4,
       title: "Lumina",
       description: "A sleek, modern AI-powered productivity application with real-time collaboration, smart task management, and an intuitive user interface.",
       icon: SiReact,
       githubUrl: "https://github.com/varunsahukar/Lumina.git"
     },
     {
-      id: 4,
+      id: 5,
       title: "Helix (Team Ocular)",
       description: "Collaborative team platform with advanced visualization, real-time data synchronization, and scalable system architecture.",
       icon: SiTypescript,
