@@ -35,13 +35,21 @@ export default function Projects({ isDark }) {
     },
     {
       id: 2,
+      title: "Portfolio",
+      description: "Modern developer portfolio with animated sections, dark/light theme, and SEO optimization. Built with React, Framer Motion, and Tailwind CSS.",
+      icon: SiReact,
+      githubUrl: "https://github.com/varunsahukar/portfoilo.git",
+      liveUrl: "https://varunsahukar9798-portfoilo.vercel.app"
+    },
+    {
+      id: 3,
       title: "Lumina",
       description: "A sleek, modern AI-powered productivity application with real-time collaboration, smart task management, and an intuitive user interface.",
       icon: SiReact,
       githubUrl: "https://github.com/varunsahukar/Lumina.git"
     },
     {
-      id: 3,
+      id: 4,
       title: "Helix (Team Ocular)",
       description: "Collaborative team platform with advanced visualization, real-time data synchronization, and scalable system architecture.",
       icon: SiTypescript,
